@@ -1,0 +1,99 @@
+@use "vars" as v;
+
+/* CSS Reset */
+
+/* Box sizing reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body, h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd {
+  margin: 0;
+}
+
+/* Set up root defaults */
+html {
+  line-height: 1.5;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -moz-tab-size: 4;
+  tab-size: 4;
+  scroll-behavior: smooth;
+}
+
+/* Set up body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Remove list styles on ul, ol elements with a list role */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+  padding: 0;
+}
+
+/* Anchor tags */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Remove default padding */
+ul,
+ol {
+  padding: 0;
+}
+
+/* Reset images and videos */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Reset form elements */
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Ensure buttons are usable */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Remove animations and transitions for people who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Table resets */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 0.5rem;
+  text-align: left;
+}

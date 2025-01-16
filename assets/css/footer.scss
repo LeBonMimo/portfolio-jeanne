@@ -1,0 +1,26 @@
+@use "vars" as v;
+
+footer {
+  background-color: v.$color-primary;
+  color: v.$color-light;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding-block: 20px;
+}
+
+.social-links{
+  display: flex;
+  gap: 1rem;
+
+  &::before{
+    content: '';
+    width: 2px;
+    height: 32px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: v.$color-light;
+  }
+}

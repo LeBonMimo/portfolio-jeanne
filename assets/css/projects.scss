@@ -1,0 +1,72 @@
+@use "vars" as v;
+
+// Projects
+.projects{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background-color: v.$color-light;
+  background-image:  radial-gradient(v.$color-primary 0.5px, transparent 0.5px), radial-gradient(v.$color-primary 0.5px, v.$color-light 0.5px);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
+
+  h2{
+    font-size: v.$fs-800;
+    color: v.$color-primary;
+    width: min(100%, 1200px);
+    margin-block: 2rem;
+  }
+
+  &-container{
+    width: min(100%, 1200px);
+  }
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.project{
+  position: relative;
+  border: 20px solid v.$color-primary;
+  border-radius: 55px;
+
+  &-img{
+    padding-bottom: 100px;
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 35px;
+    }
+  }
+  
+
+  &-description{
+    position: absolute;
+    left: -20px;
+    bottom: -20px;
+    width: calc(100% + 40px);
+    text-align: center;
+    padding: 1rem;
+    background-color: v.$color-light;
+    border: 20px solid v.$color-primary;
+    border-radius: 55px;
+
+    h3{
+      font-size: v.$fs-700;
+      color: v.$color-primary;
+    }
+
+    p{
+      color: v.$color-primary;
+    }
+  }
+}

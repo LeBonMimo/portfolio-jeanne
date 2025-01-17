@@ -1,5 +1,5 @@
 <template>
-  <div class="hero">
+  <section class="hero">
     <div class="hero-container">
       <div class="hero-title">
         <svg viewBox="0 0 382 317" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -59,7 +59,7 @@
       <span></span>
       <span></span>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup>

@@ -1,10 +1,6 @@
 <template>
-  <div>
-    
-
-    <h1>About</h1>
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam distinctio architecto itaque veniam maxime ipsum reprehenderit nam minima cum porro!</p>
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam distinctio architecto itaque veniam maxime ipsum reprehenderit nam minima cum porro!</p>
+  <div class="about">
+    <Description />
   </div>
 </template>
 

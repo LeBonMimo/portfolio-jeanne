@@ -1,14 +1,14 @@
 <template>
-  <div class="projects">
+  <section class="projects">
     <h2>Mes projets</h2>
     <div class="projects-container">
       <div class="project-grid">
-        <Project />
-        <Project />
-        <Project />
+        <Project/>
+        <Project/>
+        <Project/>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup>

@@ -1,0 +1,115 @@
+@use "vars" as v;
+
+.description {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  background-color: v.$color-light;
+  background-image:  radial-gradient(v.$color-primary 0.5px, transparent 0.5px), radial-gradient(v.$color-primary 0.5px, v.$color-light 0.5px);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
+
+  &-container{
+    width: min(100%, 1200px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &-text{
+    h1{
+      color: v.$color-primary;
+      font-size: v.$fs-700;
+      margin-block: 1rem;
+
+      span{
+        font-family: inherit;
+        position: relative;
+
+        &::before{
+          content: url('@/assets/images/strokes-small.svg');
+          position: absolute;
+          right: -30px;
+          top: -20px;
+        }
+      }
+    }
+
+    .small-circle{
+      position: relative;
+      font-weight: bold;
+      &::before{
+        content: url('@/assets/images/circle-small.svg');
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -45%);
+      }
+    }
+
+    .highlight{
+      font-weight: bold;
+      background-color: v.$color-primary-transparent;
+      padding-inline: 3px;
+    }
+
+    .underline{
+      position: relative;
+      font-weight: bold;
+      &::before{
+        content: url('@/assets/images/line-small.svg');
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+  &-photo{
+    position: relative;
+    .img-container{
+      height: 320px;
+      width: 190px;
+      border-radius: 100px;
+      border: 1px solid v.$color-primary;
+      margin: 60px;
+
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 100px;
+      }
+    }
+    .strokes-top{
+      position: absolute;
+      right: 15px;
+      top: 0;
+      transform: rotate(180deg);
+    }
+
+    .strokes-bottom{
+      position: absolute;
+      left: 15px;
+      bottom: 0;
+    }
+    svg {
+      path {
+        stroke: v.$color-primary;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px){
+  .description{
+    &-container{
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    &-text{
+      width: 50%;
+    }
+  }
+}

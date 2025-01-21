@@ -1,6 +1,7 @@
 <template>
   <div class="about">
     <Description />
+    <ContactForm />
   </div>
 </template>
 

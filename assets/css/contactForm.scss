@@ -1,0 +1,152 @@
+@use 'vars' as v;
+
+.contact {
+  width: 100%;
+  background-color: v.$color-primary;
+  background-image: radial-gradient(v.$color-light 0.5px, transparent 0.5px), radial-gradient(v.$color-light 0.5px, v.$color-primary 0.5px);
+  background-size: 40px 40px;
+  background-position: 0 0,20px 20px;
+  padding: 1rem;
+  color: v.$color-light;
+
+  h1{
+    font-size: v.$fs-700;
+    margin-block: 1rem;
+
+    span{
+      font-family: inherit;
+      position: relative;
+
+    }
+
+    svg{
+      margin-bottom: 12px;
+    }
+  }
+
+  .form-input{
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  label{
+    display: inline-block;
+    font-size: v.$fs-400;
+    background-color: v.$color-primary;
+    padding-inline: 4px;
+
+    // &:has(+ textarea){
+    //   top: 24px;
+    //   left: 14px;
+    //   transform: translateY(-50%);
+    // }
+
+    @supports (not (-ms-ime-align:auto)) {
+      border-radius: 22px;
+      opacity: .7;
+      transform: translate(.75rem, 2.5rem);
+      transition: all 0.2s ease-out;
+
+      &:has(+ input:focus), &:has(+ textarea:focus), &:has(+ input:not(:placeholder-shown)), &:has(+ textarea:not(:placeholder-shown)){
+        transform: translate(1.5rem, 1rem);
+        opacity: 1;
+      }
+    }
+    
+  }
+
+  input, textarea {
+    font-size: v.$fs-400;
+    color: inherit;
+    width: 100%;
+    padding: 8px;
+    border: 2px solid v.$color-light;
+    border-radius: 24px;
+    background-color: v.$color-primary;
+    transition: border-color 0.2s ease;
+
+    &:focus{
+      outline: none;
+    }
+  }
+  
+
+  .form-button-container{
+    display: flex;
+    justify-content: end;
+  }
+
+  &-button{
+    text-align: end;
+
+    &-wrapper{
+      display: inline-block;
+      width: 134px;
+      height: 51.5px;
+      text-align: center;
+    }
+    
+    button{
+      cursor: pointer;
+      background-color: v.$color-primary;
+      border: 2px solid v.$color-light;
+      border-radius: 12px;
+      padding-inline: 1.5rem;
+      padding-block: .5rem;
+      text-decoration: none;
+      font-weight: bold;
+      white-space: nowrap;
+      transition: all .20s ease-out;
+      transform: translate(-0.25rem,-0.25rem);
+      box-shadow: 0.25rem 0.25rem v.$color-light;
+      color: v.$color-light;
+      font-size: v.$fs-500;
+      font-family: inherit;
+
+      &:active {
+        transform: translate(0,0);
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+.message{
+  padding: 1rem;
+  border-radius: 18px;
+}
+
+.success{
+  background-color: v.$color-success;
+}
+
+@media screen and (min-width: 768px){
+  .form-semicolumn{
+    display: flex;
+    gap: 1rem;
+    & div{
+      width: 100%;
+    }
+  }
+}
+  
+
+@keyframes loading-btn--fade-in {
+  0% {
+      opacity: 0;
+  }
+
+  100% {
+      opacity: 1;
+  }
+}
+
+@keyframes loading-btn--rotation {
+  0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  100% {
+      transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

@@ -25,13 +25,10 @@
       span{
         font-family: inherit;
         position: relative;
+      }
 
-        &::before{
-          content: url('@/assets/images/strokes-small.svg');
-          position: absolute;
-          right: -30px;
-          top: -20px;
-        }
+      svg{
+        margin-bottom: 12px;
       }
     }
 

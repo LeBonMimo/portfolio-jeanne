@@ -1,6 +1,6 @@
 <template>
   <header class="header" role="banner">
-    <nav :class="['nav', menuOpen ? 'nav-open' : '']">
+    <nav id="nav" :class="['nav', menuOpen ? 'nav-open' : '']">
       <NuxtLink class="nav-logo" to="/">
         <img src="@/assets/images/logo.svg" alt="logo Olalao Jeanne" />
       </NuxtLink>
@@ -8,13 +8,13 @@
 
       <ul class="nav-menu" id="menu" tabindex="-1" aria-label="main navigation" hidden>
         <li class="nav-item">
-          <NuxtLink class="nav-link" to="/" @click="toggleMenu">Accueil</NuxtLink>
+          <NuxtLink class="nav-link" to="/" @click="toggleMenu"><span>Accueil</span></NuxtLink>
         </li>
         <li class="nav-item">
-          <NuxtLink class="nav-link" to="/#projects" @click="toggleMenu">Mes projets</NuxtLink>
+          <NuxtLink class="nav-link" to="/#projects" @click="toggleMenu"><span>Mes projets</span></NuxtLink>
         </li>
         <li class="nav-item">
-          <NuxtLink class="nav-link" to="/about" @click="toggleMenu">Présentation</NuxtLink>
+          <NuxtLink class="nav-link" to="/about" @click="toggleMenu"><span>Présentation</span></NuxtLink>
         </li>
       </ul>
 

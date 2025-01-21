@@ -20,6 +20,7 @@
 
 .nav {
   display: block;
+  
   &-logo{
     position: absolute;
     top: 0; 
@@ -55,10 +56,11 @@
     display:flex;
     flex-direction:column;
     justify-content:center;
-    height:100vh;
+    height:0;
     position:relative;
     z-index:5;
     visibility:hidden;
+    transition: height .6s cubic-bezier(0.755, 0.050, 0.855, 0.060);
   }
   
   &-item {
@@ -70,22 +72,77 @@
       transform:translateY(-40px * $i);
     }
   }
-  
+
   &-link {
-    color:v.$color-light;
-    display:block;
-    text-align:center;
-    letter-spacing:5px;
-    font-size: v.$fs-500;
-    text-decoration:none;
-    padding:1rem;
+    width: 100%;
+    text-decoration: none;
+    color: v.$color-light;
+    font-size: v.$fs-700;
+    padding: 16px 32px;
+    cursor: pointer;
+    background: none;
+
+    appearance: none;
+    cursor: pointer;
+    display: inline-block;
+    opacity: 1;
+    outline: 0;
+    text-align: center;
+    text-decoration: none;
+    transition: opacity 300ms cubic-bezier(.694, 0, 0.335, 1),background-color 100ms cubic-bezier(.694, 0, 0.335, 1),color 100ms cubic-bezier(.694, 0, 0.335, 1);
+    touch-action: manipulation;
+    vertical-align: baseline;
+    white-space: nowrap;
+
+    &:before {
+      animation: opacityFallbackOut .5s step-end forwards;
+      backface-visibility: hidden;
+      background-color: v.$color-light;
+      clip-path: polygon(-1% 0, 0 0, -25% 100%, -1% 100%);
+      content: "";
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      transform: translateZ(0);
+      transition: clip-path .5s cubic-bezier(.165, 0.84, 0.44, 1), -webkit-clip-path .5s cubic-bezier(.165, 0.84, 0.44, 1);
+      width: 100%;
+    }
+    &:hover{
+      color: v.$color-primary;
+    }
     
-    &:hover,
-    &:focus {
-      outline:0;
-      background-color:rgba(0,0,0,0.2);
+    &:hover:before {
+      animation: opacityFallbackIn 0s step-start forwards;
+      clip-path: polygon(-1% 0, 101% -1%, 101% 101%, -1% 101%);
+    }
+    
+    &:after {
+      background-color: v.$color-light;
+    }
+    
+    & span {
+      font-family: inherit;
+      z-index: 1;
+      position: relative;
     }
   }
+  
+  // &-link {
+  //   color:v.$color-light;
+  //   display:block;
+  //   text-align:center;
+  //   letter-spacing:5px;
+  //   font-size: v.$fs-500;
+  //   text-decoration:none;
+  //   padding:1rem;
+    
+  //   &:hover,
+  //   &:focus {
+  //     outline:0;
+  //     background-color:v.$color-light-transparent;
+  //   }
+  // }
 }
 
 // ---------------------------
@@ -181,6 +238,7 @@
   //show the nav items
   .nav {
     &-menu {
+      height: 100vh;
       visibility:visible;
     }
   

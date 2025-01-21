@@ -17,21 +17,22 @@
   background-position: 0 0, 20px 20px;
 
   h2{
-      color: v.$color-primary;
-      font-size: v.$fs-700;
-      font-weight: bold;
-      margin-block: 1rem;
-      width: 100%;
+    color: v.$color-primary;
+    font-size: v.$fs-700;
+    font-weight: bold;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    width: min(100%, 1200px);
 
-      span{
-        font-family: inherit;
-        position: relative;
-      }
-
-      svg{
-        margin-bottom: 12px;
-      }
+    span{
+      font-family: inherit;
+      position: relative;
     }
+
+    svg{
+      margin-bottom: 12px;
+    }
+  }
 
   &-container{
     width: min(100%, 1200px);

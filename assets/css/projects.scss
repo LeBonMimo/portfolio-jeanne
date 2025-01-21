@@ -1,6 +1,10 @@
 @use "vars" as v;
 
 // Projects
+#projects {
+  scroll-margin-top: 70px;
+}
+
 .projects{
   display: flex;
   flex-direction: column;

@@ -1,68 +1,229 @@
 @use "vars" as v;
 
+// calculate a circle's circumference based on radius
+@function circumference($r){
+  $pi: 3.141592653;
+  @return 2*$pi*$r;
+}
+
 // Navbar
 
-.nav-container{
+.header{
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  height:70px;
   z-index: 1000;
   background-color: v.$color-primary;
 }
 
-.navbar {
-  position: relative;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  height: 70px;
-  color: v.$color-light;
-}
+.nav {
+  display: block;
+  &-logo{
+    position: absolute;
+    top: 0; 
+    right: 50%;
+    transform: translateX(50%);
 
-.logo{
-  position: absolute;
-  top: 0; 
-  right: 50%;
-  transform: translateX(50%);
-}
+    img{
+      width: 128px;
+      color: inherit;
+    }
+  }
 
-.logo img{
-  width: 128px;
-  color: inherit;
-}
+  &-toggle{
+    display:inline-block;
+    position:absolute;
+    z-index:10;
+    padding:0;
+    border:0;
+    background:transparent;
+    outline:0;
+    right:15px;
+    top:15px;
+    cursor:pointer;
+    border-radius:50%;
+    transition:background-color .15s linear;
+    
+    &:hover {
+      background-color:v.$color-light-transparent;
+    }
+  }
 
-.menu {
-  position: absolute;
-  right: 0;
-  margin-right: 1rem;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 11px;
-  z-index: 3;
-
-  button{
-    cursor: pointer;
+  &-menu {
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    height:100vh;
+    position:relative;
+    z-index:5;
+    visibility:hidden;
+  }
+  
+  &-item {
+    opacity:0;
+    transition: all .5s cubic-bezier(0.000, 0.995, 0.990, 1.000) .5s;
+  }
+  @for $i from 1 through 5 {
+    &-item:nth-child(#{$i}){
+      transform:translateY(-40px * $i);
+    }
+  }
+  
+  &-link {
+    color:v.$color-light;
+    display:block;
+    text-align:center;
+    letter-spacing:5px;
+    font-size: v.$fs-500;
+    text-decoration:none;
+    padding:1rem;
+    
+    &:hover,
+    &:focus {
+      outline:0;
+      background-color:rgba(0,0,0,0.2);
+    }
   }
 }
 
-.menu-items {
-  display: none;
-  flex-direction: column;
-  gap: 13px;
-  list-style: none;
-  background: rgba(119, 119, 119, 0.25);
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-  backdrop-filter: blur( 10px );
-  -webkit-backdrop-filter: blur( 10px );
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
-  padding: 24px 33px;
+// ---------------------------
+// SVG Menu Icon
+// ---------------------------
+
+.menuicon {
+  display:block;
+  cursor:pointer;
+  color: v.$color-light;
+  
+  transform:rotate(0deg);
+  transition: .3s cubic-bezier(0.165, 0.840, 0.440, 1.000); 
+  
+  &-bar,
+  &-circle {
+    fill:none;
+    stroke: currentColor;
+    stroke-width:3;
+    stroke-linecap:round;
+  }
+  &-bar {
+    transform: rotate(0deg);
+    transform-origin:50% 50%;
+    transition: transform .25s ease-in-out;
+  }
+  &-circle {
+    transition: stroke-dashoffset .3s linear .1s;
+    stroke-dashoffset:circumference(23); // 23 is the <circle>'s radius
+    stroke-dasharray:circumference(23);
+  }
 }
 
-.menu-open {
-  display: flex;
-  z-index: 1;
+.splash {
+  position:absolute;
+  top:40px;
+  right:40px;
+  width: 1px;
+  height: 1px;
+  
+  &::after {
+    content:"";
+    display:block;
+    position:absolute;
+    border: 10rem solid v.$color-light;
+    border-radius:50%;
+    background-color:v.$color-primary;
+    
+    // screen diameter can be 142vmax at most,
+    // circle needs to be twice that size to cover it
+    width:284vmax;
+    height:284vmax;
+    top:-142vmax;
+    left:-142vmax;
+    
+    transform: scale(0);
+    transform-origin:50% 50%;
+    transition: transform .6s cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    
+    // will-change tells the browser we plan to 
+    // animate this property in the near future
+    will-change:transform;
+  }
 }
+// #nav:target,
+.nav-open {
+
+  //scale the background circle to full size
+  > .splash::after {
+    transform:scale(1);
+  }
+  
+  //animate the menu icon
+  .menuicon {
+    color:v.$color-light;
+    transform:rotate(180deg);
+    
+    &-circle {
+      stroke-dashoffset:0;
+    }
+    &-bar:nth-child(1),
+    &-bar:nth-child(4) {
+      opacity:0;
+    }
+    &-bar:nth-child(2) {
+      transform: rotate(45deg);
+    }
+    &-bar:nth-child(3) {
+      transform: rotate(-45deg);
+    }
+  }
+  
+  //show the nav items
+  .nav {
+    &-menu {
+      visibility:visible;
+    }
+  
+    &-item {
+      opacity:1;
+      transform:translateY(0);
+    }
+  }
+}
+
+
+
+// .menu {
+//   position: absolute;
+//   right: 0;
+//   margin-right: 1rem;
+//   flex-direction: column;
+//   align-items: flex-end;
+//   gap: 11px;
+//   z-index: 3;
+
+//   button{
+//     cursor: pointer;
+//   }
+// }
+
+// .menu-items {
+//   display: none;
+//   flex-direction: column;
+//   gap: 13px;
+//   list-style: none;
+//   background: rgba(119, 119, 119, 0.25);
+//   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+//   backdrop-filter: blur( 10px );
+//   -webkit-backdrop-filter: blur( 10px );
+//   border: 1px solid rgba( 255, 255, 255, 0.18 );
+//   padding: 24px 33px;
+// }
+
+// .menu-open {
+//   display: flex;
+//   z-index: 1;
+// }
 
 @media screen and (min-width: 768px){
   .menu {

@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink :to="'/' + job.id" class="project">
+  <NuxtLink :to="'/' + id" class="project">
     <div class="project-img">
       <img src="@/assets/images/Family_Trip.png" alt="cover 1">
     </div>
@@ -12,9 +12,8 @@
 
 <script setup>
 defineProps({
-  job: {
-    id: String,
-    default: 'album1',
+  id: {
+    id: String
   }
 })
 </script>

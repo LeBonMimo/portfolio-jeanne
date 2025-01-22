@@ -22,9 +22,9 @@
     </h2>
     <div class="projects-container">
       <div class="project-grid">
-        <Project />
-        <Project />
-        <Project />
+        <Project id="album1"/>
+        <Project id="album2"/>
+        <Project id="album3"/>
       </div>
     </div>
   </section>

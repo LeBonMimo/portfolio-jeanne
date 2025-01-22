@@ -1,0 +1,132 @@
+@use 'vars' as v;
+
+.album{
+  &-hero {
+    background-color: v.$color-light;
+    background-image:  radial-gradient(v.$color-primary 0.5px, transparent 0.5px), radial-gradient(v.$color-primary 0.5px, v.$color-light 0.5px);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-block: 3rem;
+  }
+
+  &-cover{
+    border: 12px solid v.$color-dark-grey;
+    
+    &-inner{
+      border: 20px solid v.$color-light-grey;
+      position: relative;
+
+      &::after{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 0 10px 0 v.$color-dark-transparent inset;
+      }
+    }
+  }
+
+  &-title {
+    position: absolute;
+    text-align: center;
+    color: v.$color-light;
+
+    &-container{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: v.$color-dark-transparent;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+    }
+
+    h1{
+      color: v.$color-light;
+      font-size: v.$fs-850;
+      font-weight: bold;
+      position: relative;
+
+      span{
+        font-family: inherit;
+        position: relative;
+      }
+
+      svg{
+        position: absolute;
+        top: -10px;
+      }
+    }
+
+    &-metadata{
+      font-size: v.$fs-400;
+      font-family: 'Degular';
+
+      span{
+        font-weight: bold;
+        font-family: inherit;
+      }
+    }
+
+    &-description{
+      margin-top: 3rem;
+      max-width: 500px;
+    }
+  }
+
+  &-banner{
+    background-color: v.$color-primary;
+    overflow: hidden;
+    &-content{
+      white-space: nowrap;
+      display: inline-block;
+      animation: horizontalScrollText 15s linear infinite;
+      
+      div{
+        display: inline-block;
+        p{
+          display: inline-block;
+          position: relative;
+          padding-inline: 28px ;
+          font-family: 'Degular';
+          font-size: v.$fs-800;
+          font-weight: bold;
+          color: v.$color-light;
+
+          &::after{
+            content: '';
+            display: block;
+            width: 16px;
+            height: 16px;
+            position: absolute;
+            right: -16px;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background-color: v.$color-light;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes horizontalScrollText {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+

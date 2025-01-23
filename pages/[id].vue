@@ -1,5 +1,6 @@
 <template>
   <AlbumHero />
+  <AlbumItems />
 </template>
 
 <script setup>

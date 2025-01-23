@@ -1,0 +1,27 @@
+@use 'vars' as v;
+
+.album-items{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  background-color: v.$color-light;
+  background-image:  radial-gradient(v.$color-primary 0.5px, transparent 0.5px), radial-gradient(v.$color-primary 0.5px, v.$color-light 0.5px);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
+
+  &-container{
+    width: min(100%, 1200px);
+  }
+
+  &-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 3rem;
+  
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}

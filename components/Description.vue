@@ -22,23 +22,36 @@
               stroke="currentColor" stroke-width="5" stroke-linecap="round" />
           </svg>
         </h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <span class="small-circle">Olalao Jeanne</span>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Olalao Jeanne
           felis in auctor tempor. Mauris vitae
           sem
           in orci tempus tincidunt. Maecenas sodales facilisis purus ut euismod. Orci varius natoque penatibus et magnis
           dis
-          parturient montes, nascetur ridiculus mus. <span class="highlight">Quisque vehicula</span>
+          parturient montes, nascetur ridiculus mus. Quisque vehicula
           , neque sed fringilla varius, augue neque lacinia
           mi,
           vel consectetur metus elit nec tellus. Sed varius feugiat tempus. Aenean lectus tortor, lacinia sodales
           sagittis
-          et, <span class="underline">porttitor</span> vitae nisi. Phasellus congue mauris ut justo tempus, vel
+          et, porttitor vitae nisi. Phasellus congue mauris ut justo tempus, vel
           ultricies dui pharetra. Donec dapibus
           tempor ipsum eu egestas. Donec est tortor, sagittis eget est id, semper fermentum enim. Sed vel nunc molestie,
-          porttitor eros ac, dignissim felis.</p>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam distinctio architecto itaque veniam maxime
+          porttitor eros ac, dignissim felis.
+        </p>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam distinctio architecto itaque veniam maxime
           ipsum
-          reprehenderit nam minima cum porro!</p>
+          reprehenderit nam minima cum porro!
+        </p>
+        <div class="description-text-line">
+          <svg fill="none" viewBox="0 0 310 90" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M3 56.5964C6.32841 56.5964 9.43937 54.9389 12.5297 53.8597C23.4946 50.0307 34.4016 45.9916 45.3217 42.0331C79.1516 29.7697 113.048 20.0641 148.682 14.6168C166.309 11.9223 184.426 10.4702 202.195 9.0945C227.644 7.12431 253.105 4.70597 278.629 4.01198C280.884 3.95065 307.364 0.952971 307.364 5.57583"
+              stroke-width="5" stroke-linecap="round" />
+            <path d="M113.838 87.3844C138.073 68.5349 170.336 58.3555 200.925 58.3555" stroke-width="5"
+              stroke-linecap="round" />
+          </svg>
+        </div>
       </div>
       <div class="description-photo">
         <svg width="101" height="95" class="strokes-top" viewBox="0 0 101 95" fill="none"

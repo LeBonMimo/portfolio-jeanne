@@ -10,10 +10,12 @@
   background-position: 0 0, 20px 20px;
 
   &-container{
-    width: min(100%, 1200px);
+    max-width: 1024px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 3rem;
+    padding-block: 3rem;
   }
 
   &-text{
@@ -32,33 +34,24 @@
       }
     }
 
-    .small-circle{
-      position: relative;
-      font-weight: bold;
-      &::before{
-        content: url('@/assets/images/circle-small.svg');
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -45%);
-      }
-    }
+    &-line{
+      display: flex;
+      justify-content: end;
+      svg{
+        stroke: v.$color-primary;
+        width: 80%;
+        path{
+          fill: transparent;
+          stroke-width: 5;
+          stroke-dasharray: 850;
+          stroke-dashoffset: 850;
+          animation: textAnimation 1s ease-in 1 forwards;
+          animation-delay: 1s;
 
-    .highlight{
-      font-weight: bold;
-      background-color: v.$color-primary-transparent;
-      padding-inline: 3px;
-    }
-
-    .underline{
-      position: relative;
-      font-weight: bold;
-      &::before{
-        content: url('@/assets/images/line-small.svg');
-        position: absolute;
-        bottom: -10px;
-        left: 50%;
-        transform: translateX(-50%);
+          &:last-child {
+            animation-delay: 2s;
+          } 
+        }
       }
     }
   }
@@ -83,12 +76,26 @@
       right: 15px;
       top: 0;
       transform: rotate(180deg);
+
+      path{
+        fill: transparent;
+        stroke-dasharray: 850;
+        stroke-dashoffset: 850;
+        animation: textAnimation 3s ease-in 1 forwards;
+      }
     }
 
     .strokes-bottom{
       position: absolute;
       left: 15px;
       bottom: 0;
+
+      path{
+        fill: transparent;
+        stroke-dasharray: 850;
+        stroke-dashoffset: 850;
+        animation: textAnimation 3s ease-in 1 forwards;
+      }
     }
     svg {
       path {
@@ -108,5 +115,14 @@
     &-text{
       width: 50%;
     }
+  }
+}
+
+@keyframes textAnimation {
+  0% {
+    stroke-dashoffset: 850;
+  }
+  100% {
+    stroke-dashoffset: 0;
   }
 }

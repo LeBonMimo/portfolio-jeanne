@@ -22,7 +22,7 @@
     </h2>
     <div class="projects-container">
       <div class="project-grid">
-        <Project v-for="project in projects" :key="project.title" :id="project.title"/>
+        <Project v-for="project in projects" :key="project.title" :id="project.title" :coverUrl="getCoverUrl(project)" :technique="project.technique" :date="project.date"/>
         <!-- <Project id="project1"/>
         <Project id="project2"/>
         <Project id="project3"/> -->
@@ -32,19 +32,39 @@
 </template>
 
 <script setup>
-import { useApiCalls } from '~/composables/apiCalls';
+// import { useApiCalls } from '~/composables/apiCalls';
 
+// const projects = ref([]);
+// const loading = ref(true);
+
+// const { fetchProjects } = useApiCalls();
+
+// onMounted(async () => {
+//   projects.value = await fetchProjects();
+//   loading.value = false;
+// });
 const projects = ref([]);
 const loading = ref(true);
 
-const { fetchProjects } = useApiCalls();
+const { find } = useStrapi();
+
+const getCoverUrl = (project) => {
+  if (project.cover?.url) {
+    return useStrapiMedia(project.cover.url);
+  }
+  return null; // Retourne `null` si aucune cover n'est disponible
+};
 
 onMounted(async () => {
-  projects.value = await fetchProjects();
-  loading.value = false;
+  try {
+    const response = await find('projects', { populate: 'cover' }); // On récupère les données avec la relation 'cover'
+    projects.value = response.data;
+  } catch (error) {
+    console.error('Erreur lors de la récupération des projects:', error);
+  } finally {
+    loading.value = false;
+  }
 });
-
-
 </script>
 
 <style lang="scss" scoped>

@@ -1,11 +1,11 @@
 <template>
   <NuxtLink :to="'/' + id" class="project">
     <div class="project-img">
-      <img src="@/assets/images/Family_Trip.png" alt="cover 1">
+      <img :src="coverUrl" alt="cover 1">
     </div>
     <div class="project-description">
-      <h3>Family Trip</h3>
-      <p>Dessin, 2024</p>
+      <h3>{{ id }}</h3>
+      <p>{{ technique }}, {{ date }}</p>
     </div>
   </NuxtLink>
 </template>
@@ -14,7 +14,19 @@
 defineProps({
   id: {
     id: String
-  }
+  },
+
+  technique: {
+    type: String
+  },
+
+  date: {
+    type: String
+  },
+
+  coverUrl: {
+    tye: String
+  },
 })
 </script>
 

@@ -1,6 +1,6 @@
 <template>
-  <AlbumHero />
-  <AlbumItems />
+  <ProjectHero />
+  <ProjectItems />
 </template>
 
 <script setup>

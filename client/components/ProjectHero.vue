@@ -1,12 +1,12 @@
 <template>
-  <div class="album-hero">
-    <div class="album-cover">
-      <div class="album-cover-inner">
+  <div class="project-hero">
+    <div class="project-cover">
+      <div class="project-cover-inner">
         <img src="@/assets/images/Family_Trip.png" alt="cover 1">
       </div>
     </div>
-    <div class="album-title-container">
-      <div class="album-title">
+    <div class="project-title-container">
+      <div class="project-title">
         <h1>
           <span>{{ id }}</span>
           <svg width="45" height="43" viewBox="0 0 45 43" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -27,8 +27,8 @@
               stroke="currentColor" stroke-width="5" stroke-linecap="round" />
           </svg>
         </h1>
-        <p class="album-title-metadata">Dessin, <span>2024</span></p>
-        <p class="album-title-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, dolores
+        <p class="project-title-metadata">Dessin, <span>2024</span></p>
+        <p class="project-title-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, dolores
           maiores
           vitae soluta eum corporis sed nulla temporibus atque labore.</p>
       </div>
@@ -36,8 +36,8 @@
 
 
   </div>
-  <div class="album-banner">
-    <div class="album-banner-content">
+  <div class="project-banner">
+    <div class="project-banner-content">
       <div>
         <p>{{ id }}</p>
         <p>{{ id }}</p>
@@ -79,5 +79,5 @@
 </script>
 
 <style lang="scss" scoped>
-  @use "@/assets/css/album-hero.scss";
+  @use "@/assets/css/project-hero.scss";
 </style>

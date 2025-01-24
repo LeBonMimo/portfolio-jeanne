@@ -1,8 +1,8 @@
 <template>
-  <div class="album-item-container">
-    <div class="album-item">
-      <div class="album-item-cover">
-        <div class="album-item-cover-inner">
+  <div class="project-item-container">
+    <div class="project-item">
+      <div class="project-item-cover">
+        <div class="project-item-cover-inner">
           <img src="@/assets/images/Family_Trip.png" alt="cover 1">
         </div>
       </div>
@@ -17,5 +17,5 @@
 </script>
 
 <style lang="scss" scoped>
-@use "@/assets/css/album-item.scss";
+@use "@/assets/css/project-item.scss";
 </style>

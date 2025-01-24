@@ -1,6 +1,6 @@
 @use 'vars' as v;
 
-.album{
+.project{
   &-hero {
     background-color: v.$color-light;
     background-image:  radial-gradient(v.$color-primary 0.5px, transparent 0.5px), radial-gradient(v.$color-primary 0.5px, v.$color-light 0.5px);

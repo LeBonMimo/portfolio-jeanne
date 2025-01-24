@@ -13,7 +13,12 @@
 </template>
 
 <script setup>
+const find = useStrapi();
 
+const { data, pending, error, refresh } = await useAsyncData(
+    'ProjectItem',
+    () => find('project-items')
+);
 </script>
 
 <style lang="scss" scoped>

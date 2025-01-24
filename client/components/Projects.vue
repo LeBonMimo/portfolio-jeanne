@@ -22,15 +22,28 @@
     </h2>
     <div class="projects-container">
       <div class="project-grid">
-        <Project id="project1"/>
+        <Project v-for="project in projects" :key="project.title" :id="project.title"/>
+        <!-- <Project id="project1"/>
         <Project id="project2"/>
-        <Project id="project3"/>
+        <Project id="project3"/> -->
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
+import { useApiCalls } from '~/composables/apiCalls';
+
+const projects = ref([]);
+const loading = ref(true);
+
+const { fetchProjects } = useApiCalls();
+
+onMounted(async () => {
+  projects.value = await fetchProjects();
+  loading.value = false;
+});
+
 
 </script>
 

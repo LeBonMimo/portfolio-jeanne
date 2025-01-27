@@ -6,6 +6,9 @@
       </div>
     </div>
     <div class="project-title-container">
+    <NuxtLink class="return-link" to="/#projects">
+      <Icon icon="ph:arrow-left" width="32" color="#FFFFFF"/>
+    </NuxtLink>
       <div class="project-title">
         <h1>
           <span>{{ id }}</span>
@@ -75,6 +78,8 @@
 </template>
 
 <script setup>
+  import { Icon } from '@iconify/vue'
+
   const { id } = useRoute().params;
 </script>
 

@@ -3,22 +3,35 @@
     <div class="project-item">
       <div class="project-item-cover">
         <div class="project-item-cover-inner">
-          <img src="@/assets/images/Family_Trip.png" alt="cover 1">
+          <img :src="imageUrl" :alt="imageAlt">
         </div>
       </div>
-      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus quod inventore facere aspernatur similique
-        facilis labore earum fugit commodi beatae.</p>
+      <h2>{{ title }}</h2>
+      <p>{{ description }}</p>
     </div>
   </div>
 </template>
 
 <script setup>
-const find = useStrapi();
+import Description from './Description.vue';
 
-const { data, pending, error, refresh } = await useAsyncData(
-    'ProjectItem',
-    () => find('project-items')
-);
+defineProps({
+  imageUrl: {
+    image: String,
+  },
+
+  imageAlt: {
+    image: String,
+  },
+
+  title:{
+    title: String,
+  },
+
+  description: {
+    description: String,
+  },
+})
 </script>
 
 <style lang="scss" scoped>

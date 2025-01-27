@@ -2,7 +2,7 @@
   <div class="project-hero">
     <div class="project-cover">
       <div class="project-cover-inner">
-        <img src="@/assets/images/Family_Trip.png" alt="cover 1">
+        <img :src="getCoverUrl(project?.data)" alt="cover 1">
       </div>
     </div>
     <div class="project-title-container">
@@ -11,7 +11,7 @@
     </NuxtLink>
       <div class="project-title">
         <h1>
-          <span>{{ id }}</span>
+          <span>{{ project?.data.title }}</span>
           <svg width="45" height="43" viewBox="0 0 45 43" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M9.9544 21.2011C10.1844 19.3487 11.3706 17.2095 12.0361 15.8889C12.9335 14.1082 13.7957 12.0718 14.767 10.5027C15.8026 8.82976 16.8217 6.9484 17.9114 5.47721C18.4138 4.79892 19.129 3.32239 19.6214 2.90422"
@@ -30,10 +30,8 @@
               stroke="currentColor" stroke-width="5" stroke-linecap="round" />
           </svg>
         </h1>
-        <p class="project-title-metadata">Dessin, <span>2024</span></p>
-        <p class="project-title-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, dolores
-          maiores
-          vitae soluta eum corporis sed nulla temporibus atque labore.</p>
+        <p class="project-title-metadata">{{ project?.data.technique }}, <span>{{ project?.data.date }}</span></p>
+        <p class="project-title-description">{{ project?.data.description }}</p>
       </div>
     </div>
 
@@ -42,36 +40,36 @@
   <div class="project-banner">
     <div class="project-banner-content">
       <div>
-        <p>{{ id }}</p>
-        <p>{{ id }}</p>
-        <p>{{ id }}</p>
-        <p>{{ id }}</p>
-        <p>{{ id }}</p>
-        <p>{{ id }}</p>
-        <p>{{ id }}</p>
-        <p>{{ id }}</p>
-        <p>{{ id }}</p>
-        <p>{{ id }}</p>
-        <p>{{ id }}</p>
-        <p>{{ id }}</p>
-        <p>{{ id }}</p>
-        <p>{{ id }}</p>
+        <p>{{ project?.data.title }}</p>
+        <p>{{ project?.data.title }}</p>
+        <p>{{ project?.data.title }}</p>
+        <p>{{ project?.data.title }}</p>
+        <p>{{ project?.data.title }}</p>
+        <p>{{ project?.data.title }}</p>
+        <p>{{ project?.data.title }}</p>
+        <p>{{ project?.data.title }}</p>
+        <p>{{ project?.data.title }}</p>
+        <p>{{ project?.data.title }}</p>
+        <p>{{ project?.data.title }}</p>
+        <p>{{ project?.data.title }}</p>
+        <p>{{ project?.data.title }}</p>
+        <p>{{ project?.data.title }}</p>
       </div>
       <div>
-        <p>{{ id }}</p>
-        <p>{{ id }}</p>
-        <p>{{ id }}</p>
-        <p>{{ id }}</p>
-        <p>{{ id }}</p>
-        <p>{{ id }}</p>
-        <p>{{ id }}</p>
-        <p>{{ id }}</p>
-        <p>{{ id }}</p>
-        <p>{{ id }}</p>
-        <p>{{ id }}</p>
-        <p>{{ id }}</p>
-        <p>{{ id }}</p>
-        <p>{{ id }}</p>
+        <p>{{ project?.data.title }}</p>
+        <p>{{ project?.data.title }}</p>
+        <p>{{ project?.data.title }}</p>
+        <p>{{ project?.data.title }}</p>
+        <p>{{ project?.data.title }}</p>
+        <p>{{ project?.data.title }}</p>
+        <p>{{ project?.data.title }}</p>
+        <p>{{ project?.data.title }}</p>
+        <p>{{ project?.data.title }}</p>
+        <p>{{ project?.data.title }}</p>
+        <p>{{ project?.data.title }}</p>
+        <p>{{ project?.data.title }}</p>
+        <p>{{ project?.data.title }}</p>
+        <p>{{ project?.data.title }}</p>
       </div>
     </div>
   </div>
@@ -81,6 +79,29 @@
   import { Icon } from '@iconify/vue'
 
   const { id } = useRoute().params;
+
+  const { findOne } = useStrapi();
+  const project = ref([]);
+  const loading = ref(true);
+  const error = ref(null);
+
+  const getCoverUrl = (project) => {
+    if (project.cover?.url) {
+      return useStrapiMedia(project.cover.url);
+    }
+    return null; // Retourne `null` si aucune cover n'est disponible
+  };
+
+  const { data, pending, error: fetchError } = await useAsyncData
+  ('projects', () => findOne('projects', id, { populate: 'cover' }));
+
+  if (fetchError.value) {
+    console.error('Erreur lors de la récupération des projects:', fetchError.value);
+  } else {
+    project.value = data.value;
+    loading.value = pending.value;
+    error.value = fetchError.value;
+  }
 </script>
 
 <style lang="scss" scoped>

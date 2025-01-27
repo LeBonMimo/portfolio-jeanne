@@ -4,7 +4,7 @@
       <img :src="coverUrl" alt="cover 1">
     </div>
     <div class="project-description">
-      <h3>{{ id }}</h3>
+      <h3>{{ title }}</h3>
       <p>{{ technique }}, {{ date }}</p>
     </div>
   </NuxtLink>
@@ -14,6 +14,10 @@
 defineProps({
   id: {
     id: String
+  },
+
+  title: {
+    type: String
   },
 
   technique: {

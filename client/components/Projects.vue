@@ -21,32 +21,20 @@
       </svg>
     </h2>
     <div class="projects-container">
+      <p v-if="loading">Loading ...</p>
       <div class="project-grid">
-        <Project v-for="project in projects" :key="project.title" :id="project.title" :coverUrl="getCoverUrl(project)" :technique="project.technique" :date="project.date"/>
-        <!-- <Project id="project1"/>
-        <Project id="project2"/>
-        <Project id="project3"/> -->
+        <Project v-for="project in projects?.data" :key="project.id" :id="project.documentId" :title="project.title" :coverUrl="getCoverUrl(project)" :technique="project.technique" :date="project.date"/>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-// import { useApiCalls } from '~/composables/apiCalls';
-
-// const projects = ref([]);
-// const loading = ref(true);
-
-// const { fetchProjects } = useApiCalls();
-
-// onMounted(async () => {
-//   projects.value = await fetchProjects();
-//   loading.value = false;
-// });
-const projects = ref([]);
-const loading = ref(true);
 
 const { find } = useStrapi();
+const projects = ref([]);
+const loading = ref(true);
+const error = ref(null);
 
 const getCoverUrl = (project) => {
   if (project.cover?.url) {
@@ -55,16 +43,15 @@ const getCoverUrl = (project) => {
   return null; // Retourne `null` si aucune cover n'est disponible
 };
 
-onMounted(async () => {
-  try {
-    const response = await find('projects', { populate: 'cover' }); // On récupère les données avec la relation 'cover'
-    projects.value = response.data;
-  } catch (error) {
-    console.error('Erreur lors de la récupération des projects:', error);
-  } finally {
-    loading.value = false;
-  }
-});
+const { data, pending, error: fetchError } = await useAsyncData('projects', () => find('projects', { populate: 'cover' }));
+
+if (fetchError.value) {
+  console.error('Erreur lors de la récupération des projects:', fetchError.value);
+} else {
+  projects.value = data.value;
+  loading.value = pending.value;
+  error.value = fetchError.value;
+}
 </script>
 
 <style lang="scss" scoped>

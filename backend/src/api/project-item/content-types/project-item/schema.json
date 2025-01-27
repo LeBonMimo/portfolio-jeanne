@@ -4,7 +4,8 @@
   "info": {
     "singularName": "project-item",
     "pluralName": "project-items",
-    "displayName": "ProjectItem"
+    "displayName": "ProjectItems",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -16,12 +17,12 @@
       "required": true
     },
     "image": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "description": {
       "type": "text"

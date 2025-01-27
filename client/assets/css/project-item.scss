@@ -26,7 +26,10 @@
       }
     }
   }
-
+  h2{
+    font-size: v.$fs-500;
+    font-weight: bold;
+  }
   p{
     text-align: center;
     max-width: 400px;

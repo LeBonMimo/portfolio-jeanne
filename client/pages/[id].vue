@@ -1,10 +1,10 @@
 <template>
-  <ProjectHero />
+  <ProjectHero/>
   <ProjectItems />
 </template>
 
 <script setup>
-   
+
 </script>
 
 <style lang="scss" scoped>

@@ -1,13 +1,14 @@
 @use 'vars' as v;
 
 .project-item{
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   gap: 1rem;
   &-cover{
     border: 12px solid v.$color-dark-grey;
-    width: min(100%, 460px);
     &-inner{
       border: 20px solid v.$color-light-grey;
       position: relative;
@@ -26,13 +27,17 @@
       }
     }
   }
-  h2{
-    font-size: v.$fs-500;
-    font-weight: bold;
-  }
-  p{
+  &-text {
     text-align: center;
-    max-width: 400px;
+    h2{
+      font-size: v.$fs-500;
+      font-weight: bold;
+    }
+    p{
+      text-align: center;
+      max-width: 400px;
+    }
   }
+  
 }
 

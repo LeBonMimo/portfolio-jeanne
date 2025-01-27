@@ -6,8 +6,10 @@
           <img :src="imageUrl" :alt="imageAlt">
         </div>
       </div>
-      <h2>{{ title }}</h2>
-      <p>{{ description }}</p>
+      <div class="project-item-text">
+        <h2>{{ title }}</h2>
+        <p>{{ description }}</p>
+      </div>
     </div>
   </div>
 </template>

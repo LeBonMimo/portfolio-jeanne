@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_blocks_hero_sections",
+  "info": {
+    "displayName": "Hero Section"
+  },
+  "options": {},
+  "attributes": {
+    "subHeading": {
+      "type": "text"
+    }
+  }
+}

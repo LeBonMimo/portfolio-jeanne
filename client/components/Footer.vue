@@ -4,11 +4,11 @@
       <img src="@/assets/images/logo.svg" />
     </NuxtLink>
     <div class="social-links">
-      <NuxtLink to="#">
-        <Icon class="insta-icon" icon="ph:instagram-logo" width="32" color="#FFFFFF"/>
+      <NuxtLink to="#" >
+        <Icon icon="ph:instagram-logo" width="32" color="#FFFFFF" target="_blank"/>
       </NuxtLink>
       <NuxtLink to="#">
-        <Icon icon="ph:linkedin-logo" width="32" color="#FFFFFF"/>
+        <Icon icon="ph:linkedin-logo" width="32" color="#FFFFFF" target="_blank"/>
       </NuxtLink>
     </div>
     <p>© 2025 - Tous droits réservés</p>

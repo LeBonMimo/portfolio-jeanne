@@ -1,0 +1,26 @@
+{
+  "kind": "singleType",
+  "collectionName": "layout_pages",
+  "info": {
+    "singularName": "layout-page",
+    "pluralName": "layout-pages",
+    "displayName": "Layout Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "navbar": {
+      "type": "component",
+      "repeatable": false,
+      "component": "layout.navbar"
+    },
+    "footer": {
+      "type": "component",
+      "repeatable": false,
+      "component": "layout.footer"
+    }
+  }
+}

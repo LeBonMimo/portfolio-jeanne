@@ -1,22 +1,51 @@
 <template>
   <footer>
     <NuxtLink to="/">
-      <img src="@/assets/images/logo.svg" />
+      <img :src="getImageUrl(footer?.data.footer.logo)" :alt="footer?.data.footer.logo.alternativeText"/>
     </NuxtLink>
     <div class="social-links">
-      <NuxtLink to="#" >
-        <Icon icon="ph:instagram-logo" width="32" color="#FFFFFF" target="_blank"/>
-      </NuxtLink>
-      <NuxtLink to="#">
-        <Icon icon="ph:linkedin-logo" width="32" color="#FFFFFF" target="_blank"/>
+      <NuxtLink v-for="footerLinks in footer?.data.footer.footerLinks" :key="footerLinks.id" :to="footerLinks.url" >
+        <Icon :icon="'ph:' + footerLinks.label" width="32" color="#FFFFFF" target="_blank"/>
       </NuxtLink>
     </div>
-    <p>© 2025 - Tous droits réservés</p>
+    <p>{{ footer?.data.footer.copyright }}</p>
   </footer>
 </template>
 
 <script setup>
   import { Icon } from '@iconify/vue'
+  import { useUtils } from '~/composables/utils'
+  
+  //fetch data from strapi
+
+  const { find } = useStrapi();
+  const { getImageUrl } = useUtils();
+  const footer = ref([]);
+  const loading = ref(true);
+  const error = ref(null);
+
+  const { data, pending, error: fetchError } = await useAsyncData('footer', () => find('layout-page', { 
+    populate: {
+      "footer":{
+        populate: {
+          "footerLinks":{
+            populate: "*",
+          },
+          "logo":{
+            fields: ["url", "alternativeText"],
+          }
+        }
+      }
+    },
+  }));
+
+  if (fetchError.value) {
+    console.error('Erreur lors de la récupération des projects:', fetchError.value);
+  } else {
+    footer.value = data.value;
+    loading.value = pending.value;
+    error.value = fetchError.value;
+  }
 </script>
 
 <style lang="scss" scoped>

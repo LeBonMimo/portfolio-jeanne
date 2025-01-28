@@ -7,7 +7,7 @@
       <!-- ACTUAL NAVIGATION MENU -->
 
       <ul class="nav-menu" id="menu" tabindex="-1" aria-label="main navigation" hidden>
-        <li v-for="navLinks in navbar?.data.navbar.navItems" class="nav-item">
+        <li v-for="navLinks in navbar?.data.navbar.navItems" :key="navLinks.id" class="nav-item">
           <NuxtLink class="nav-link" :to="navLinks.url" @click="toggleMenu"><span>{{ navLinks.label }}</span></NuxtLink>
         </li>
       </ul>

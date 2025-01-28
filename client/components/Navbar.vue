@@ -2,19 +2,13 @@
   <header class="header" role="banner">
     <nav id="nav" :class="['nav', menuOpen ? 'nav-open' : '']">
       <NuxtLink class="nav-logo" to="/">
-        <img src="@/assets/images/logo.svg" alt="logo Olalao Jeanne" />
+        <img :src="getImageUrl(navbar?.data.navbar.logo)" alt="logo Olalao Jeanne" />
       </NuxtLink>
       <!-- ACTUAL NAVIGATION MENU -->
 
       <ul class="nav-menu" id="menu" tabindex="-1" aria-label="main navigation" hidden>
-        <li class="nav-item">
-          <NuxtLink class="nav-link" to="/" @click="toggleMenu"><span>Accueil</span></NuxtLink>
-        </li>
-        <li class="nav-item">
-          <NuxtLink class="nav-link" to="/#projects" @click="toggleMenu"><span>Mes projets</span></NuxtLink>
-        </li>
-        <li class="nav-item">
-          <NuxtLink class="nav-link" to="/about" @click="toggleMenu"><span>Présentation</span></NuxtLink>
+        <li v-for="navLinks in navbar?.data.navbar.navItems" class="nav-item">
+          <NuxtLink class="nav-link" :to="navLinks.url" @click="toggleMenu"><span>{{ navLinks.label }}</span></NuxtLink>
         </li>
       </ul>
 
@@ -33,27 +27,6 @@
       
       <!-- ANIMATED BACKGROUND ELEMENT -->
       <div class="splash"></div>
-      
-
-      <!-- <div class="menu">
-        <button v-if="menuOpen" @click="showMobileMenu">
-          <Icon icon="ph:x" width="32" color="#FFFFFF" />
-        </button>
-        <button v-else @click="showMobileMenu">
-          <Icon icon="ph:list" width="32" color="#FFFFFF" />
-        </button>
-        <ul :class="['menu-items', menuOpen ? 'menu-open' : ''] " @click="showMobileMenu">
-          <li>
-            <NuxtLink class="menu-link" to="/">Accueil</NuxtLink>
-          </li>
-          <li>
-            <NuxtLink class="menu-link" to="#projects">Mes projets</NuxtLink>
-          </li>
-          <li>
-            <NuxtLink class="menu-link" to="/about">Présentation</NuxtLink>
-          </li>
-        </ul>
-      </div> -->
     </nav>
   </header>
 </template>
@@ -61,11 +34,47 @@
 <script setup>
 import { Icon } from '@iconify/vue'
 
+
+//Toggle menu
 const menuOpen = ref(false)
 
 const toggleMenu = () =>  {
   menuOpen.value = !menuOpen.value
 }
+
+//fetch data from strapi
+
+import { useUtils } from '~/composables/utils'
+
+const { find } = useStrapi();
+const { getImageUrl } = useUtils();
+const navbar = ref([]);
+const loading = ref(true);
+const error = ref(null);
+
+const { data, pending, error: fetchError } = await useAsyncData('navbar', () => find('layout-page', { 
+  populate: {
+    "navbar":{
+      populate: {
+        "navItems":{
+          populate: "*",
+        },
+        "logo":{
+          fields: ["url", "alternativeText"],
+        }
+      }
+    }
+  },
+}));
+
+if (fetchError.value) {
+  console.error('Erreur lors de la récupération des projects:', fetchError.value);
+} else {
+  navbar.value = data.value;
+  loading.value = pending.value;
+  error.value = fetchError.value;
+}
+
 </script>
 
 <style lang="scss" scoped>

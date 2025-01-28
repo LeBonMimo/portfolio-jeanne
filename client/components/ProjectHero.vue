@@ -2,7 +2,7 @@
   <div class="project-hero">
     <div class="project-cover">
       <div class="project-cover-inner">
-        <img :src="getCoverUrl(project?.data)" alt="cover 1">
+        <img :src="getImageUrl(project?.data.cover)" alt="cover 1">
       </div>
     </div>
     <div class="project-title-container">
@@ -77,20 +77,17 @@
 
 <script setup>
   import { Icon } from '@iconify/vue'
+  import { useUtils } from '~/composables/utils'
 
   const { id } = useRoute().params;
 
   const { findOne } = useStrapi();
+  const { getImageUrl } = useUtils();
+
   const project = ref([]);
   const loading = ref(true);
   const error = ref(null);
 
-  const getCoverUrl = (project) => {
-    if (project.cover?.url) {
-      return useStrapiMedia(project.cover.url);
-    }
-    return null; // Retourne `null` si aucune cover n'est disponible
-  };
 
   const { data, pending, error: fetchError } = await useAsyncData
   ('projects', () => findOne('projects', id, { populate: 'cover' }));

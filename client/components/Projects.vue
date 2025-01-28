@@ -23,25 +23,20 @@
     <div class="projects-container">
       <p v-if="loading">Loading ...</p>
       <div class="project-grid">
-        <Project v-for="project in projects?.data" :key="project.id" :id="project.documentId" :title="project.title" :coverUrl="getCoverUrl(project)" :technique="project.technique" :date="project.date"/>
+        <Project v-for="project in projects?.data" :key="project.id" :id="project.documentId" :title="project.title" :coverUrl="getImageUrl(project.cover)" :technique="project.technique" :date="project.date"/>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
+import { useUtils } from '~/composables/utils'
 
 const { find } = useStrapi();
+const { getImageUrl } = useUtils();
 const projects = ref([]);
 const loading = ref(true);
 const error = ref(null);
-
-const getCoverUrl = (project) => {
-  if (project.cover?.url) {
-    return useStrapiMedia(project.cover.url);
-  }
-  return null; // Retourne `null` si aucune cover n'est disponible
-};
 
 const { data, pending, error: fetchError } = await useAsyncData('projects', () => find('projects', { populate: 'cover' }));
 

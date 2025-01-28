@@ -2,27 +2,22 @@
   <div class="project-items">
     <div class="project-items-container">
       <div class="project-items-grid">
-        <ProjectItem v-for="item in items?.data.project_items" :key="item.id" :title="item.title" :description="item.description" :imageUrl="getImageUrl(item)" :imageAlt="item.image.alternativeText" />
+        <ProjectItem v-for="item in items?.data.project_items" :key="item.id" :title="item.title" :description="item.description" :imageUrl="getImageUrl(item.image)" :imageAlt="item.image.alternativeText" />
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-const { id } = useRoute().params;
+import { useUtils } from '~/composables/utils'
 
+const { id } = useRoute().params;
 const { findOne } = useStrapi();
+const { getImageUrl } = useUtils();
 
 const items = ref([]);
 const loading = ref(true);
 const error = ref(null);
-
-const getImageUrl = (item) => {
-  if (item.image?.url) {
-    return useStrapiMedia(item.image.url);
-  }
-  return null;
-};
 
 const { data, pending, error: fetchError } = await useAsyncData(`project-${id}`, () => 
   findOne('projects', id, {

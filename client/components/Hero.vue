@@ -58,8 +58,7 @@
         </svg>
       </div>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, maxime modi aperiam dolore delectus sed
-        iure. Pariatur deleniti commodi aperiam.
+        {{ hero?.data.blocks[0].subHeading }}
       </p>
       <svg class="strokes-down" width="101" height="95" viewBox="0 0 101 95" fill="none"
         xmlns="http://www.w3.org/2000/svg">
@@ -90,7 +89,30 @@
 </template>
 
 <script setup>
-import { Icon } from '@iconify/vue'
+const { find } = useStrapi();
+const hero = ref([]);
+const loading = ref(true);
+const error = ref(null);
+
+const { data, pending, error: fetchError } = await useAsyncData('hero', () => find('landing-page', { 
+  populate: {
+    "blocks": {
+      "on":{
+        "blocks.hero-section": {
+          populate: "*",
+        },
+      }
+    }
+  },
+}));
+
+if (fetchError.value) {
+  console.error('Erreur lors de la récupération des projects:', fetchError.value);
+} else {
+  hero.value = data.value;
+  loading.value = pending.value;
+  error.value = fetchError.value;
+}
 </script>
 
 <style lang="scss" scoped>

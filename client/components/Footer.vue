@@ -4,8 +4,8 @@
       <img :src="getImageUrl(footer?.data.footer.logo)" :alt="footer?.data.footer.logo.alternativeText"/>
     </NuxtLink>
     <div class="social-links">
-      <NuxtLink v-for="footerLinks in footer?.data.footer.footerLinks" :key="footerLinks.id" :to="footerLinks.url" >
-        <Icon :icon="'ph:' + footerLinks.label" width="32" color="#FFFFFF" target="_blank"/>
+      <NuxtLink target="_blank" v-for="footerLinks in footer?.data.footer.footerLinks" :key="footerLinks.id" :to="footerLinks.url" >
+        <Icon :icon="'ph:' + footerLinks.label" width="32" color="#FFFFFF"/>
       </NuxtLink>
     </div>
     <p>{{ footer?.data.footer.copyright }}</p>

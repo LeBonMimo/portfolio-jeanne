@@ -1,7 +1,7 @@
 <template>
   <section id="projects" class="projects">
     <h2>
-      <span>Mes projets</span>
+      <span>{{ projects?.data.blocks[0].title }}</span>
       <svg width="45" height="43" viewBox="0 0 45 43" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M9.9544 21.2011C10.1844 19.3487 11.3706 17.2095 12.0361 15.8889C12.9335 14.1082 13.7957 12.0718 14.767 10.5027C15.8026 8.82976 16.8217 6.9484 17.9114 5.47721C18.4138 4.79892 19.129 3.32239 19.6214 2.90422"
@@ -23,7 +23,7 @@
     <div class="projects-container">
       <p v-if="loading">Loading ...</p>
       <div class="project-grid">
-        <Project v-for="project in projects?.data" :key="project.id" :id="project.documentId" :title="project.title" :coverUrl="getImageUrl(project.cover)" :technique="project.technique" :date="project.date"/>
+        <Project v-for="project in projects?.data.blocks[0].projects" :key="project.id" :id="project.documentId" :title="project.title" :coverUrl="getImageUrl(project.cover)" :technique="project.technique" :date="project.date"/>
       </div>
     </div>
   </section>
@@ -38,7 +38,23 @@ const projects = ref([]);
 const loading = ref(true);
 const error = ref(null);
 
-const { data, pending, error: fetchError } = await useAsyncData('projects', () => find('projects', { populate: 'cover' }));
+const { data, pending, error: fetchError } = await useAsyncData('projects', () => find('landing-page', { 
+  populate: {
+    "blocks": {
+      "on":{
+        "blocks.projects-section": {
+          populate: {
+            "projects": {
+              populate: "cover"
+            }
+          }
+        },
+      }
+    }
+  },
+}));
+
+// const { data, pending, error: fetchError } = await useAsyncData('projects', () => find('projects', { populate: 'cover' }));
 
 if (fetchError.value) {
   console.error('Erreur lors de la récupération des projects:', fetchError.value);

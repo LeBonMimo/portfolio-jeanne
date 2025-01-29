@@ -36,9 +36,11 @@ export interface BlocksHeroSection extends Struct.ComponentSchema {
 export interface BlocksProjectsSection extends Struct.ComponentSchema {
   collectionName: 'components_blocks_projects_sections';
   info: {
+    description: '';
     displayName: 'Projects Section';
   };
   attributes: {
+    projects: Schema.Attribute.Relation<'oneToMany', 'api::project.project'>;
     title: Schema.Attribute.String;
   };
 }

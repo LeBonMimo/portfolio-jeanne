@@ -160,6 +160,12 @@
         stroke-dashoffset: 1700;
         animation: textDesktopAnimation 3s ease-in-out 1 forwards;
       }
+
+      .svg-writing{
+        animation: textFillDesktopAnimation 3s ease-in-out 1 forwards;
+      }
+
+
       .stroke3 {
         stroke-width: 12;
         animation-delay: 2.25s;
@@ -221,6 +227,19 @@
     stroke-dashoffset: 850;
   }
   100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes textFillDesktopAnimation {
+  0% {
+    stroke-dashoffset: 1700;
+  }
+  80% {
+    fill: transparent;
+  }
+  100% {
+    fill: v.$color-light;
     stroke-dashoffset: 0;
   }
 }

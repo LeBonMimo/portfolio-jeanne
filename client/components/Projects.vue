@@ -30,7 +30,7 @@
 </template>
 
 <script setup>
-import { useUtils } from '~/composables/utils'
+import { useUtils } from '~/composables/utils';
 
 const { find } = useStrapi();
 const { getImageUrl } = useUtils();

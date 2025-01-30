@@ -1,17 +1,26 @@
 <template>
   <div class="about">
-    <Description />
-    <ContactForm />
+    <Description :data="about?.data.blocks[0]"/>
+    <ContactForm :data="about?.data.blocks[1]"/>
   </div>
 </template>
 
 <script setup>
+
 const { find } = useStrapi();
 const about = ref([]);
 const loading = ref(true);
 const error = ref(null);
 
-const { data, pending, error: fetchError } = await useAsyncData('about-page', () => find('about-page'));
+const { data, pending, error: fetchError } = await useAsyncData('about', () => find('about-page', { 
+  populate: {
+    "blocks": {
+      populate: "*",
+    }
+  }
+}));
+
+// const { data, pending, error: fetchError } = await useAsyncData('projects', () => find('projects', { populate: 'cover' }));
 
 if (fetchError.value) {
   console.error('Erreur lors de la récupération des projects:', fetchError.value);
@@ -21,9 +30,7 @@ if (fetchError.value) {
   error.value = fetchError.value;
 }
 
-console.log(about.value?.data.title)
-
-const title = "Olalao Jeanne";
+const title = "Olalao Jeanne"
 
 useHead({
   title: title.concat(' | ', about.value?.data.title),

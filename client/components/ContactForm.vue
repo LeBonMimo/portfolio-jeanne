@@ -2,7 +2,7 @@
   <div class="contact">
     <div class="contact-container">
       <h1>
-        <span>Contactez-moi</span>
+        <span>{{ data.title }}</span>
         <svg width="45" height="43" viewBox="0 0 45 43" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M9.9544 21.2011C10.1844 19.3487 11.3706 17.2095 12.0361 15.8889C12.9335 14.1082 13.7957 12.0718 14.767 10.5027C15.8026 8.82976 16.8217 6.9484 17.9114 5.47721C18.4138 4.79892 19.129 3.32239 19.6214 2.90422"
@@ -22,7 +22,7 @@
         </svg>
 
       </h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta velit, expedita tempore minima eligendi at voluptatem odit porro autem ipsam dolorem temporibus nam animi dolores. Impedit, eos. Nihil reprehenderit repudiandae error ipsum. Repudiandae harum voluptatem recusandae amet rerum sequi exercitationem.</p>
+      <p>{{ data.description }}</p>
 
       <p v-if="error" style="color: white;">{{ error }}</p>
       <div v-if="success" class="message success">
@@ -66,6 +66,14 @@
 </template>
 
 <script setup>
+//data fetching
+defineProps({
+  data: {
+    data: Object
+  },
+})
+
+//form validation
 import { ref } from 'vue';
 import emailjs from '@emailjs/browser';
 
@@ -129,7 +137,6 @@ const handleSubmit = () => {
 
   sendEmail(templateParams);
 };
-
 </script>
 
 

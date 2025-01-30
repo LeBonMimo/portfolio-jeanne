@@ -3,7 +3,7 @@
     <div class="description-container">
       <div class="description-text">
         <h1>
-          <span>Hey, moi c’est Jeanne !</span>
+          <span>{{ data.title }}</span>
           <svg width="45" height="43" viewBox="0 0 45 43" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M9.9544 21.2011C10.1844 19.3487 11.3706 17.2095 12.0361 15.8889C12.9335 14.1082 13.7957 12.0718 14.767 10.5027C15.8026 8.82976 16.8217 6.9484 17.9114 5.47721C18.4138 4.79892 19.129 3.32239 19.6214 2.90422"
@@ -23,25 +23,7 @@
           </svg>
         </h1>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Olalao Jeanne
-          felis in auctor tempor. Mauris vitae
-          sem
-          in orci tempus tincidunt. Maecenas sodales facilisis purus ut euismod. Orci varius natoque penatibus et magnis
-          dis
-          parturient montes, nascetur ridiculus mus. Quisque vehicula
-          , neque sed fringilla varius, augue neque lacinia
-          mi,
-          vel consectetur metus elit nec tellus. Sed varius feugiat tempus. Aenean lectus tortor, lacinia sodales
-          sagittis
-          et, porttitor vitae nisi. Phasellus congue mauris ut justo tempus, vel
-          ultricies dui pharetra. Donec dapibus
-          tempor ipsum eu egestas. Donec est tortor, sagittis eget est id, semper fermentum enim. Sed vel nunc molestie,
-          porttitor eros ac, dignissim felis.
-        </p>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam distinctio architecto itaque veniam maxime
-          ipsum
-          reprehenderit nam minima cum porro!
+          {{ data.description }}
         </p>
         <div class="description-text-line">
           <svg fill="none" viewBox="0 0 310 90" xmlns="http://www.w3.org/2000/svg">
@@ -74,7 +56,7 @@
         </svg>
 
         <div class="img-container">
-          <img src="@/assets/images/marché_.png" alt="photo de Jeanne">
+          <img :src="getImageUrl(data.image)" alt="photo de Jeanne">
         </div>
         <svg width="101" height="95" class="strokes-bottom" viewBox="0 0 101 95" fill="none"
           xmlns="http://www.w3.org/2000/svg">
@@ -100,7 +82,15 @@
 </template>
 
 <script setup>
+import { useUtils } from '~/composables/utils';
 
+const { getImageUrl } = useUtils();
+
+defineProps({
+  data: {
+    data: Object
+  },
+})
 </script>
 
 <style lang="scss" scoped>

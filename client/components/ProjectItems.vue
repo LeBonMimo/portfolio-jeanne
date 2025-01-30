@@ -19,7 +19,7 @@ const items = ref([]);
 const loading = ref(true);
 const error = ref(null);
 
-const { data, pending, error: fetchError } = await useAsyncData(`project-${id}`, () => 
+const { data, pending, error: fetchError } = await useAsyncData(`project-items`, () => 
   findOne('projects', id, {
     populate: {
       project_items: { // Populer la relation projectItems
@@ -30,7 +30,7 @@ const { data, pending, error: fetchError } = await useAsyncData(`project-${id}`,
 );
 
 if (fetchError.value) {
-  console.error('Erreur lors de la récupération des projects:', fetchError.value);
+  console.error('Erreur lors de la récupération du project:', fetchError.value);
 } else {
   items.value = data.value;
   loading.value = pending.value;

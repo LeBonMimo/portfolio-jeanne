@@ -107,7 +107,7 @@ const { data, pending, error: fetchError } = await useAsyncData('hero', () => fi
 }));
 
 if (fetchError.value) {
-  console.error('Erreur lors de la récupération des projects:', fetchError.value);
+  console.error('Erreur lors de la récupération de la hero-section:', fetchError.value);
 } else {
   hero.value = data.value;
   loading.value = pending.value;

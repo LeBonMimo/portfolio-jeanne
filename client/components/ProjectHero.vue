@@ -79,26 +79,14 @@
   import { Icon } from '@iconify/vue'
   import { useUtils } from '~/composables/utils'
 
-  const { id } = useRoute().params;
-
-  const { findOne } = useStrapi();
   const { getImageUrl } = useUtils();
 
-  const project = ref([]);
-  const loading = ref(true);
-  const error = ref(null);
-
-
-  const { data, pending, error: fetchError } = await useAsyncData
-  ('projects', () => findOne('projects', id, { populate: 'cover' }));
-
-  if (fetchError.value) {
-    console.error('Erreur lors de la récupération des projects:', fetchError.value);
-  } else {
-    project.value = data.value;
-    loading.value = pending.value;
-    error.value = fetchError.value;
-  }
+  defineProps({
+    project: {
+      project: Object,
+      required: true,
+    }
+  })
 </script>
 
 <style lang="scss" scoped>

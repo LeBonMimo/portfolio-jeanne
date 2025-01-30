@@ -54,7 +54,6 @@ const { data, pending, error: fetchError } = await useAsyncData('projects', () =
   },
 }));
 
-// const { data, pending, error: fetchError } = await useAsyncData('projects', () => find('projects', { populate: 'cover' }));
 
 if (fetchError.value) {
   console.error('Erreur lors de la récupération des projects:', fetchError.value);

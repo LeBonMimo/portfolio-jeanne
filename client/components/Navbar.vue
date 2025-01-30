@@ -68,7 +68,7 @@ const { data, pending, error: fetchError } = await useAsyncData('navbar', () => 
 }));
 
 if (fetchError.value) {
-  console.error('Erreur lors de la récupération des projects:', fetchError.value);
+  console.error('Erreur lors de la récupération de la navbar:', fetchError.value);
 } else {
   navbar.value = data.value;
   loading.value = pending.value;

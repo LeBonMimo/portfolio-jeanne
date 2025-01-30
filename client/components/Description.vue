@@ -88,7 +88,8 @@ const { getImageUrl } = useUtils();
 
 defineProps({
   data: {
-    data: Object
+    data: Object,
+    required: true,
   },
 })
 </script>

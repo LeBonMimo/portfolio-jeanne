@@ -20,10 +20,8 @@ const { data, pending, error: fetchError } = await useAsyncData('about', () => f
   }
 }));
 
-// const { data, pending, error: fetchError } = await useAsyncData('projects', () => find('projects', { populate: 'cover' }));
-
 if (fetchError.value) {
-  console.error('Erreur lors de la récupération des projects:', fetchError.value);
+  console.error('Erreur lors de la récupération de about-page:', fetchError.value);
 } else {
   about.value = data.value;
   loading.value = pending.value;

@@ -40,7 +40,7 @@
   }));
 
   if (fetchError.value) {
-    console.error('Erreur lors de la récupération des projects:', fetchError.value);
+    console.error('Erreur lors de la récupération du footer:', fetchError.value);
   } else {
     footer.value = data.value;
     loading.value = pending.value;

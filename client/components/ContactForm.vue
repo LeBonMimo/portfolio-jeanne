@@ -69,12 +69,12 @@
 //data fetching
 defineProps({
   data: {
-    data: Object
+    data: Object,
+    required: true,
   },
 })
 
 //form validation
-import { ref } from 'vue';
 import emailjs from '@emailjs/browser';
 
 const formData = ref({

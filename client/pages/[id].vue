@@ -2,7 +2,7 @@
   <Head>
     <Title>Olalao Jeanne | {{ project?.data.title }}</Title>
   </Head>
-  <ProjectHero/>
+  <ProjectHero :project="project"/>
   <ProjectItems />
 </template>
 
@@ -16,10 +16,10 @@ const error = ref(null);
 
 
 const { data, pending, error: fetchError } = await useAsyncData
-('projects', () => findOne('projects', id));
+('project', () => findOne('projects', id, { populate: 'cover' }));
 
 if (fetchError.value) {
-  console.error('Erreur lors de la récupération des projects:', fetchError.value);
+  console.error('Erreur lors de la récupération du project:', fetchError.value);
 } else {
   project.value = data.value;
   loading.value = pending.value;

@@ -24,11 +24,6 @@
       </h1>
       <p>{{ data.description }}</p>
 
-      <p v-if="error" style="color: white;">{{ error }}</p>
-      <div v-if="success" class="message success">
-        <p>{{ success }}</p>
-      </div>
-
       <form @submit.prevent="handleSubmit">
         <div class="form-semicolumn">
           <div class="form-input">
@@ -76,6 +71,8 @@ defineProps({
 
 //form validation
 import emailjs from '@emailjs/browser';
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 
 const formData = ref({
   name: '',
@@ -83,9 +80,6 @@ const formData = ref({
   subject: '',
   message: ''
 });
-
-const error = ref('');
-const success = ref('');
 
 const validateEmail = (email) => {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -100,8 +94,10 @@ const sendEmail = (templateParams) => {
   emailjs.send(serviceID, templateID, templateParams, userID)
     .then((response) => {
       console.log('SUCCESS!', response.status, response.text);
-      success.value = 'Votre message a été envoyé avec succès.';
-      error.value = '';
+      toast.success("Votre message a été envoyé avec succès.", {
+        autoClose: 2000,
+      });
+      
       formData.value = {
         name: '',
         email: '',
@@ -110,21 +106,26 @@ const sendEmail = (templateParams) => {
       };
     }, (err) => {
       console.error('FAILED...', err);
-      error.value = "Une erreur s'est produite lors de l'envoi de votre message.";
+      toast.error("Une erreur s'est produite lors de l'envoi de votre message.", {
+        autoClose: 2000,
+      });
     });
 };
 
 const handleSubmit = () => {
 
   if (!formData.value.name || !formData.value.email || !formData.value.message) {
-    error.value = 'Tous les champs obligatoires doivent être remplis.';
-    success.value = '';
+    toast.error("Tous les champs obligatoires doivent être remplis.", {
+      autoClose: 2000,
+    });
+    
     return;
   }
 
   if (!validateEmail(formData.value.email)) {
-    error.value = 'Veuillez entrer une adresse email valide.';
-    success.value = '';
+    toast.error("Veuillez entrer une adresse email valide.", {
+        autoClose: 2000,
+      });
     return;
   }
 

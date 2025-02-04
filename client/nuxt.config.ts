@@ -12,13 +12,15 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/icon',
     '@nuxt/fonts',
-    '@nuxtjs/strapi'
+    '@nuxtjs/strapi',
   ],
+
   strapi: {
     url: 'http://localhost:1337',
     prefix: '/api', // Préfixe par défaut de l'API Strapi v4/v5
     version: 'v4', // Assure-toi que c'est bien configuré pour Strapi 5
   },
+
   app: {
     head: {
       title: 'Olalao Jeanne',

@@ -16,7 +16,7 @@ export default defineNuxtConfig({
   ],
 
   strapi: {
-    url: 'http://localhost:1337',
+    url: process.env.NUXT_PUBLIC_STRAPI_URL || 'http://localhost:1337',
     prefix: '/api', // Préfixe par défaut de l'API Strapi v4/v5
     version: 'v4', // Assure-toi que c'est bien configuré pour Strapi 5
   },

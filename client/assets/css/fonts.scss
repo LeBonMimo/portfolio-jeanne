@@ -1,7 +1,8 @@
 @font-face {
   font-family: 'Poppins';
   src: url('@/assets/fonts/poppins/Poppins-Regular.woff2') format('woff2'),
-       url('@/assets/fonts/poppins/Poppins-Regular.woff') format('woff');
+       url('@/assets/fonts/poppins/Poppins-Regular.woff') format('woff'),
+       url('@/assets/fonts/poppins/Poppins-Regular.ttf') format('ttf');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -10,7 +11,8 @@
 @font-face {
   font-family: 'Degular';
   src: url('@/assets/fonts/Degular/Degular-Bold.woff2') format('woff2'),
-       url('@/assets/fonts/Degular/Degular-Bold.woff') format('woff');
+       url('@/assets/fonts/Degular/Degular-Bold.woff') format('woff'),
+       url('@/assets/fonts/Degular/Degular-Bold.ttf') format('ttf');
   font-weight: 400;
   font-style: normal;
   font-display: swap;

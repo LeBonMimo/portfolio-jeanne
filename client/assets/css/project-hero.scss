@@ -85,7 +85,7 @@
 
     &-metadata{
       font-size: v.$fs-400;
-      font-family: 'Degular';
+      font-family: 'Degular', Arial, Helvetica, sans-serif;
 
       span{
         font-weight: bold;
@@ -113,7 +113,7 @@
           display: inline-block;
           position: relative;
           padding-inline: 28px ;
-          font-family: 'Degular';
+          font-family: 'Degular', Arial, Helvetica, sans-serif;
           font-size: v.$fs-800;
           font-weight: bold;
           color: v.$color-light;

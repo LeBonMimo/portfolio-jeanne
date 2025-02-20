@@ -11,7 +11,6 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/image',
     '@nuxt/icon',
-    '@nuxt/fonts',
     '@nuxtjs/strapi',
   ],
 

@@ -14,24 +14,26 @@
     padding-block: 3rem;
 
     .return-link{
-      position: absolute;
+      position: fixed;
       left: 1rem;
-      top: 1rem;
+      top: calc(1rem + 70px);
       border-radius: 50%;
       height: 36px;
       width: 36px;
       display: grid;
       place-items: center;
       transition: all 0.3s ease;
+      background-color: v.$color-dark-grey;
 
       &:hover{
-        background-color: v.$color-dark-grey;
+        transform: scale(1.05);;
       }
     }
   }
 
   &-cover{
     border: 12px solid v.$color-dark-grey;
+    max-width: min(100%, 500px);
     
     &-inner{
       border: 20px solid v.$color-light-grey;

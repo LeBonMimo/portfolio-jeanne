@@ -23,11 +23,10 @@
     <div class="news-container">
       <p v-if="loading">Loading ...</p>
       <div class="news-grid">
-        <SaleProjects v-for="project in projects?.data.blocks[0].projects.filter(p => p.isSalable)" :key="project.id" :id="project.documentId" :title="project.title" :coverUrl="getImageUrl(project.cover)" :technique="project.technique" :date="project.date"/>
+        <SaleProjects v-for="project in projects?.data.blocks[0].projects.filter(p => p.isSalable === true)" :key="project.id" :id="project.documentId" :title="project.title" :coverUrl="getImageUrl(project.cover)" :technique="project.technique" :date="project.date"/>
         
-        <NewsContainer v-for="project in projects?.data.blocks[0].projects.filter(p => p.isNews)" :key="project.id" :title="project.title" :description="project.description"/>
+        <NewsContainer v-for="project in projects?.data.blocks[0].projects.filter(p => p.isNews === true)" :key="project.id" :title="project.title" :description="project.description"/>
 
-        <NewsContainer title="News" description="Découvrez les dernières actualités de l'artiste"/>
       </div>
     </div>
     

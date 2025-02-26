@@ -41,35 +41,37 @@
     <div class="project-banner-content">
       <div>
         <p>{{ project?.data.title }}</p>
+        <p>{{ project?.data.date }}</p>
+        <p>{{ project?.data.technique }}</p>
         <p>{{ project?.data.title }}</p>
+        <p>{{ project?.data.date }}</p>
+        <p>{{ project?.data.technique }}</p>
         <p>{{ project?.data.title }}</p>
+        <p>{{ project?.data.date }}</p>
+        <p>{{ project?.data.technique }}</p>
         <p>{{ project?.data.title }}</p>
+        <p>{{ project?.data.date }}</p>
+        <p>{{ project?.data.technique }}</p>
         <p>{{ project?.data.title }}</p>
-        <p>{{ project?.data.title }}</p>
-        <p>{{ project?.data.title }}</p>
-        <p>{{ project?.data.title }}</p>
-        <p>{{ project?.data.title }}</p>
-        <p>{{ project?.data.title }}</p>
-        <p>{{ project?.data.title }}</p>
-        <p>{{ project?.data.title }}</p>
-        <p>{{ project?.data.title }}</p>
-        <p>{{ project?.data.title }}</p>
+        <p>{{ project?.data.date }}</p>
+        <p>{{ project?.data.technique }}</p>
       </div>
       <div>
         <p>{{ project?.data.title }}</p>
+        <p>{{ project?.data.date }}</p>
+        <p>{{ project?.data.technique }}</p>
         <p>{{ project?.data.title }}</p>
+        <p>{{ project?.data.date }}</p>
+        <p>{{ project?.data.technique }}</p>
         <p>{{ project?.data.title }}</p>
+        <p>{{ project?.data.date }}</p>
+        <p>{{ project?.data.technique }}</p>
         <p>{{ project?.data.title }}</p>
+        <p>{{ project?.data.date }}</p>
+        <p>{{ project?.data.technique }}</p>
         <p>{{ project?.data.title }}</p>
-        <p>{{ project?.data.title }}</p>
-        <p>{{ project?.data.title }}</p>
-        <p>{{ project?.data.title }}</p>
-        <p>{{ project?.data.title }}</p>
-        <p>{{ project?.data.title }}</p>
-        <p>{{ project?.data.title }}</p>
-        <p>{{ project?.data.title }}</p>
-        <p>{{ project?.data.title }}</p>
-        <p>{{ project?.data.title }}</p>
+        <p>{{ project?.data.date }}</p>
+        <p>{{ project?.data.technique }}</p>
       </div>
     </div>
   </div>

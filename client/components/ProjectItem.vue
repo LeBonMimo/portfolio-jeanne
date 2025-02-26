@@ -9,6 +9,7 @@
       <div class="project-item-text">
         <h2>{{ title }}</h2>
         <p>{{ description }}</p>
+        <a v-if="isSalable" :href="link">Lien vers le site marchand</a>
       </div>
     </div>
   </div>
@@ -32,6 +33,14 @@ defineProps({
 
   description: {
     description: String,
+  },
+
+  link: {
+    link: String,
+  },
+
+  isSalable: {
+    isSalable: Boolean,
   },
 })
 </script>

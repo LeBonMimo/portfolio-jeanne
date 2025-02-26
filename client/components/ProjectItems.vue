@@ -2,7 +2,7 @@
   <div class="project-items">
     <div class="project-items-container">
       <div class="project-items-grid">
-        <ProjectItem v-for="item in items?.data.project_items" :key="item.id" :title="item.title" :description="item.description" :imageUrl="getImageUrl(item.image)" :imageAlt="item.image.alternativeText" />
+        <ProjectItem v-for="item in items?.data.project_items" :key="item.id" :title="item.title" :description="item.description" :imageUrl="getImageUrl(item.image)" :imageAlt="item.image.alternativeText" :isSalable="item.isSalable" :link="item.link"/>
       </div>
     </div>
   </div>

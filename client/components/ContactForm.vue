@@ -87,9 +87,9 @@ const validateEmail = (email) => {
 };
 
 const sendEmail = (templateParams) => {
-  const serviceID = 'service_twldyyu';
-  const templateID = 'template_70ohod8';
-  const userID = 'lh9pqZdkamPYgoSUw';
+  const serviceID = 'service_uw9jj6a';
+  const templateID = 'template_4jrz9t9';
+  const userID = 'nU-nk5pqIZArIv0RJ';
 
   emailjs.send(serviceID, templateID, templateParams, userID)
     .then((response) => {

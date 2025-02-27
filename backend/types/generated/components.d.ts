@@ -3,11 +3,16 @@ import type { Schema, Struct } from '@strapi/strapi';
 export interface BlocksAboutMeSection extends Struct.ComponentSchema {
   collectionName: 'components_blocks_about_me_sections';
   info: {
+    description: '';
     displayName: 'About Me Section';
   };
   attributes: {
-    description: Schema.Attribute.Text;
     image: Schema.Attribute.Media<'images'>;
+    paragraph1: Schema.Attribute.Text;
+    paragraph2: Schema.Attribute.Text;
+    paragraph3: Schema.Attribute.Text;
+    paragraph4: Schema.Attribute.Text;
+    paragraph5: Schema.Attribute.Text;
     title: Schema.Attribute.String;
   };
 }

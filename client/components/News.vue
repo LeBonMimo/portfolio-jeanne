@@ -69,7 +69,6 @@ if (fetchError.value) {
   error.value = fetchError.value;
 }
 
-console.log(news);
 </script>
 
 <style lang="scss" scoped>

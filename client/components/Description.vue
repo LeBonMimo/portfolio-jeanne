@@ -23,7 +23,19 @@
           </svg>
         </h1>
         <p>
-          {{ data.description }}
+          {{ data.paragraph1 }}
+        </p>
+        <p>
+          {{ data.paragraph2 }}
+        </p>
+        <p>
+          {{ data.paragraph3 }}
+        </p>
+        <p>
+          {{ data.paragraph4 }}
+        </p>
+        <p>
+          {{ data.paragraph5 }}
         </p>
         <div class="description-text-line">
           <svg fill="none" viewBox="0 0 310 90" xmlns="http://www.w3.org/2000/svg">

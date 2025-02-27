@@ -414,7 +414,7 @@ export interface ApiLandingPageLandingPage extends Struct.SingleTypeSchema {
   };
   attributes: {
     blocks: Schema.Attribute.DynamicZone<
-      ['blocks.projects-section', 'blocks.hero-section']
+      ['blocks.projects-section', 'blocks.hero-section', 'blocks.news-section']
     >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -481,6 +481,7 @@ export interface ApiProjectItemProjectItem extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
     image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    link: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -507,12 +508,15 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
-    cover: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    cover: Schema.Attribute.Media<'images'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    date: Schema.Attribute.String & Schema.Attribute.Required;
+    date: Schema.Attribute.String;
     description: Schema.Attribute.Text;
+    isNews: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    isProject: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    isSalable: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -524,8 +528,8 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
       'api::project-item.project-item'
     >;
     publishedAt: Schema.Attribute.DateTime;
-    technique: Schema.Attribute.String & Schema.Attribute.Required;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
+    technique: Schema.Attribute.String;
+    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

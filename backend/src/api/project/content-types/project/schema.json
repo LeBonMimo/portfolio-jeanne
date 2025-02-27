@@ -14,12 +14,12 @@
   "attributes": {
     "title": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "cover": {
       "type": "media",
       "multiple": false,
-      "required": true,
+      "required": false,
       "allowedTypes": [
         "images"
       ]
@@ -31,14 +31,26 @@
     },
     "technique": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "date": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "description": {
       "type": "text"
+    },
+    "isSalable": {
+      "type": "boolean",
+      "default": false
+    },
+    "isProject": {
+      "type": "boolean",
+      "default": false
+    },
+    "isNews": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

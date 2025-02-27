@@ -9,7 +9,7 @@
       <div class="project-item-text">
         <h2>{{ title }}</h2>
         <p>{{ description }}</p>
-        <a v-if="isSalable" :href="link">Lien vers le site marchand</a>
+        <a v-if="link != null" :href="link" target="_blank">Lien vers le site marchand</a>
       </div>
     </div>
   </div>

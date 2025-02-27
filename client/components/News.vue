@@ -23,9 +23,11 @@
     <div class="news-container">
       <p v-if="loading">Loading ...</p>
       <div class="news-grid">
-        <SaleProjects v-for="project in projects?.data.blocks[0].projects.filter(p => p.isSalable === true)" :key="project.id" :id="project.documentId" :title="project.title" :coverUrl="getImageUrl(project.cover)" :technique="project.technique" :date="project.date"/>
+        <SaleProjects v-for="project in news?.data.blocks[0].projects.filter(p => p.isSalable === true)" :key="project.id" :id="project.documentId" :title="project.title" :coverUrl="getImageUrl(project.cover)" :technique="project.technique" :date="project.date"/>
         
-        <NewsContainer v-for="project in projects?.data.blocks[0].projects.filter(p => p.isNews === true)" :key="project.id" :title="project.title" :description="project.description"/>
+        <NewsContainer v-for="project in news?.data.blocks[0].projects.filter(p => p.isNews === true)" :key="project.id" :title="project.title" :description="project.description"/>
+
+        
 
       </div>
     </div>
@@ -38,11 +40,11 @@ import { useUtils } from '~/composables/utils';
 
 const { find } = useStrapi();
 const { getImageUrl } = useUtils();
-const projects = ref([]);
+const news = ref([]);
 const loading = ref(true);
 const error = ref(null);
 
-const { data, pending, error: fetchError } = await useAsyncData('projects', () => find('landing-page', { 
+const { data, pending, error: fetchError } = await useAsyncData('news', () => find('landing-page', { 
   populate: {
     "blocks": {
       "on":{
@@ -62,10 +64,12 @@ const { data, pending, error: fetchError } = await useAsyncData('projects', () =
 if (fetchError.value) {
   console.error('Erreur lors de la récupération des projects:', fetchError.value);
 } else {
-  projects.value = data.value;
+  news.value = data.value;
   loading.value = pending.value;
   error.value = fetchError.value;
 }
+
+console.log(news);
 </script>
 
 <style lang="scss" scoped>

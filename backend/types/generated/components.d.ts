@@ -33,6 +33,17 @@ export interface BlocksHeroSection extends Struct.ComponentSchema {
   };
 }
 
+export interface BlocksNewsSection extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_news_sections';
+  info: {
+    displayName: 'News Section';
+  };
+  attributes: {
+    projects: Schema.Attribute.Relation<'oneToMany', 'api::project.project'>;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface BlocksProjectsSection extends Struct.ComponentSchema {
   collectionName: 'components_blocks_projects_sections';
   info: {
@@ -87,6 +98,7 @@ declare module '@strapi/strapi' {
       'blocks.about-me-section': BlocksAboutMeSection;
       'blocks.contact-section': BlocksContactSection;
       'blocks.hero-section': BlocksHeroSection;
+      'blocks.news-section': BlocksNewsSection;
       'blocks.projects-section': BlocksProjectsSection;
       'elements.link': ElementsLink;
       'layout.footer': LayoutFooter;

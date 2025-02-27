@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_blocks_news_sections",
+  "info": {
+    "displayName": "News Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "projects": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::project.project"
+    }
+  }
+}

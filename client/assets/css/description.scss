@@ -21,7 +21,7 @@
   &-text{
     h1{
       color: v.$color-primary;
-      font-size: v.$fs-700;
+      font-size: v.$fs-600;
       margin-block: 1rem;
 
       span{
@@ -118,6 +118,10 @@
 
     &-text{
       width: 50%;
+
+      h1{
+        font-size: v.$fs-700;
+      }
     }
   }
 }

@@ -1,5 +1,5 @@
 module.exports = ({ env }) => ({
-  host: env('HOST', '0.0.0.0'),
+  host: env('HOST', '::'),
   port: env.int('PORT', 1337),
   url: 'https://api.olalao-jeanne.fr',
   app: {

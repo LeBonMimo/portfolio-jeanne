@@ -19,9 +19,9 @@ module.exports = [
     name: 'strapi::cors',
     config: {
       enabled: true,
-      origin: ['https://olalao-jeanne.fr', 'https://www.olalao-jeanne.fr', 'https://api.olalao-jeanne.fr'],
+      origin: '*',
       methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-      headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
+      headers: '*',
       keepHeaderOnError: true,
       credentials: true,
     },

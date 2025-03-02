@@ -18,7 +18,10 @@ module.exports = [
   {
     name: "strapi::cors",
     config: {
-      origin: ['https://olalao-jeanne.fr', 'https://www.olalao-jeanne.fr'],
+      origin: process.env.CORS_ORIGIN?.split(',') || [
+        'https://olalao-jeanne.fr',
+        'https://www.olalao-jeanne.fr',
+      ],
       headers: [
         "Content-Type",
         "Authorization",

@@ -16,13 +16,16 @@ module.exports = [
     },
   },
   {
-    name: 'strapi::cors',
+    name: "strapi::cors",
     config: {
-      enabled: true,
-      origin: '*',
-      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-      headers: '*',
-      keepHeaderOnError: true,
+      origin: ['https://olalao-jeanne.fr', 'https://www.olalao-jeanne.fr'],
+      headers: [
+        "Content-Type",
+        "Authorization",
+        "Origin",
+        "Accept"
+      ],
+      methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
       credentials: true,
     },
   },

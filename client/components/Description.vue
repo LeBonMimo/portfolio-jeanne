@@ -22,27 +22,11 @@
               stroke="currentColor" stroke-width="5" stroke-linecap="round" />
           </svg>
         </h1>
-        <!-- <p >
-          {{ data.paragraph1 }}
-        </p>
-        <p>
-          {{ data.paragraph2 }}
-        </p>
-        <p>
-          {{ data.paragraph3 }}
-        </p>
-        <p>
-          {{ data.paragraph4 }}
-        </p>
-        <p >
-          {{ data.paragraph5 }}
-        </p> -->
         <div v-html="marked(data.paragraph1)"></div>
         <div v-html="marked(data.paragraph2)"></div>
         <div v-html="marked(data.paragraph3)"></div>
         <div v-html="marked(data.paragraph4)"></div>
         <div v-html="marked(data.paragraph5)"></div>
-          
         
         <div class="description-text-line">
           <svg fill="none" viewBox="0 0 310 90" xmlns="http://www.w3.org/2000/svg">
@@ -112,12 +96,6 @@ defineProps({
     required: true,
   },
 })
-
-// const paragraph1 = marked(data.paragraph1 || "");
-// const paragraph2 = marked(data.paragraph2 || "");
-// const paragraph3 = marked(data.paragraph3 || "");
-// const paragraph4 = marked(data.paragraph4 || "");
-// const paragraph5 = marked(data.paragraph5 || "");
 </script>
 
 <style lang="scss" scoped>

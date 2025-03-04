@@ -8,11 +8,11 @@ export interface BlocksAboutMeSection extends Struct.ComponentSchema {
   };
   attributes: {
     image: Schema.Attribute.Media<'images'>;
-    paragraph1: Schema.Attribute.Text;
-    paragraph2: Schema.Attribute.Text;
-    paragraph3: Schema.Attribute.Text;
-    paragraph4: Schema.Attribute.Text;
-    paragraph5: Schema.Attribute.Text;
+    paragraph1: Schema.Attribute.RichText;
+    paragraph2: Schema.Attribute.RichText;
+    paragraph3: Schema.Attribute.RichText;
+    paragraph4: Schema.Attribute.RichText;
+    paragraph5: Schema.Attribute.RichText;
     title: Schema.Attribute.String;
   };
 }

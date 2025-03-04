@@ -10,9 +10,6 @@
       "type": "string",
       "required": false
     },
-    "paragraph1": {
-      "type": "text"
-    },
     "image": {
       "type": "media",
       "multiple": false,
@@ -21,17 +18,20 @@
         "images"
       ]
     },
-    "paragraph2": {
-      "type": "text"
-    },
-    "paragraph3": {
-      "type": "text"
+    "paragraph5": {
+      "type": "richtext"
     },
     "paragraph4": {
-      "type": "text"
+      "type": "richtext"
     },
-    "paragraph5": {
-      "type": "text"
+    "paragraph1": {
+      "type": "richtext"
+    },
+    "paragraph2": {
+      "type": "richtext"
+    },
+    "paragraph3": {
+      "type": "richtext"
     }
   }
 }

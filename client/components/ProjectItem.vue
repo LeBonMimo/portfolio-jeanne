@@ -20,11 +20,12 @@ import Description from './Description.vue';
 
 defineProps({
   imageUrl: {
-    image: String,
+    imageUrl: String,
   },
 
   imageAlt: {
-    image: String,
+    imageAlt: String,
+    default: 'Dessin de Jeanne',
   },
 
   title:{

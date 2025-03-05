@@ -1,7 +1,7 @@
 <template>
   <NuxtLink :to="'/' + id" class="sale-project">
     <div class="sale-project-img">
-      <img :src="coverUrl" alt="cover 1">
+      <img :src="coverUrl" alt="cover des projets en vente">
     </div>
     <div class="sale-project-description">
       <h3>{{ title }}</h3>

@@ -7,9 +7,9 @@ module.exports = [
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
-          'img-src': ["'self'", 'data:', 'blob:', 'https://api.olalao-jeanne.fr', 'https://olalao-jeanne.fr', '*'],
-          'media-src': ["'self'", 'data:', 'blob:', 'https://api.olalao-jeanne.fr', 'https://olalao-jeanne.fr', '*'],
-          'connect-src': ["'self'", 'https://api.olalao-jeanne.fr', 'https://olalao-jeanne.fr', '*'],
+          'img-src': ["'self'", 'data:', 'blob:', 'https://api.olalao-jeanne.fr', 'https://www.olalao-jeanne.fr', '*'],
+          'media-src': ["'self'", 'data:', 'blob:', 'https://api.olalao-jeanne.fr', 'https://www.olalao-jeanne.fr', '*'],
+          'connect-src': ["'self'", 'https://api.olalao-jeanne.fr', 'https://www.olalao-jeanne.fr', '*'],
           upgradeInsecureRequests: null,
         },
       },
@@ -25,6 +25,8 @@ module.exports = [
       headers: [
         "Content-Type",
         "Authorization",
+	"Origin",
+	"Accept",
       ],
       methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
       credentials: true,

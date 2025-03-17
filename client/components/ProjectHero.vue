@@ -6,9 +6,13 @@
       </div>
     </div>
     <div class="project-title-container">
-    <NuxtLink class="return-link" to="/#projects">
+    <NuxtLink v-if="project?.data.isSalable === true" class="return-link" to="/#news">
       <Icon icon="ph:arrow-left" width="32" color="#FFFFFF"/>
     </NuxtLink>
+    <NuxtLink v-else class="return-link" to="/#projects">
+      <Icon icon="ph:arrow-left" width="32" color="#FFFFFF"/>
+    </NuxtLink>
+
       <div class="project-title">
         <h1>
           <span>{{ project?.data.title }}</span>

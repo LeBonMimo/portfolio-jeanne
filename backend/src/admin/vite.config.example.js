@@ -1,6 +1,7 @@
-const { mergeConfig } = require('vite');
+// @ts-ignore
+import { mergeConfig } from 'vite'
 
-module.exports = (config) => {
+export default (config) => {
   // Important: always return the modified config
   return mergeConfig(config, {
     resolve: {
@@ -8,5 +9,14 @@ module.exports = (config) => {
         '@': '/src',
       },
     },
-  });
-};
+    server: {
+      cors: {
+        origin: process.env.CORS_ORIGIN?.split(',') || [
+          'https://olalao-jeanne.fr',
+          'https://www.olalao-jeanne.fr',
+        ],
+        credentials: true,
+      },
+    },
+  })
+}

@@ -7,8 +7,8 @@ module.exports = [
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
-          'img-src': ["'self'", 'data:', 'blob:', 'https://api.olalao-jeanne.fr', 'https://www.olalao-jeanne.fr', 'https:'],
-          'media-src': ["'self'", 'data:', 'blob:', 'https://api.olalao-jeanne.fr', 'https://www.olalao-jeanne.fr', 'https:'],
+          'img-src': ["'self'", 'data:', 'blob:', 'https://api.olalao-jeanne.fr', 'https://www.olalao-jeanne.fr', 'res.cloudinary.com'],
+          'media-src': ["'self'", 'data:', 'blob:', 'https://api.olalao-jeanne.fr', 'https://www.olalao-jeanne.fr', 'res.cloudinary.com'],
           'connect-src': ["'self'", 'https://api.olalao-jeanne.fr', 'https://www.olalao-jeanne.fr', 'https:', '*'],
           upgradeInsecureRequests: null,
         },

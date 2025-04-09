@@ -1,7 +1,7 @@
 <template>
   <footer>
     <NuxtLink to="/">
-      <img width="128" :src="getImageUrl(footer?.data.footer.logo)" :alt="footer?.data.footer.logo.alternativeText"/>
+      <img width="128" :src="getImageUrl(footer?.data.footer.logo)" :alt="footer?.data.footer?.logo.alternativeText"/>
     </NuxtLink>
     <div class="social-links">
       <NuxtLink target="_blank" v-for="footerLinks in footer?.data.footer.footerLinks" :key="footerLinks.id" :to="footerLinks.url" >

@@ -41,17 +41,17 @@ const error = ref(null);
 const { data, pending, error: fetchError } = await useAsyncData('projects', () => find('landing-page', { 
   populate: {
     "blocks": {
-      "on":{
+      "on": {
         "blocks.projects-section": {
           populate: {
-            "projects": {
+            projects: {
               populate: "cover"
             }
           }
-        },
+        }
       }
     }
-  },
+  } 
 }));
 
 

@@ -1,5 +1,6 @@
-module.exports = {
-  settings: {
+
+module.exports = ({ env }) => {
+  return {
     cors: {
       origin: process.env.CORS_ORIGIN?.split(',') || [
         'https://olalao-jeanne.fr',
@@ -17,18 +18,19 @@ module.exports = {
       credentials: true,
     },
     upload: {
-      provider: 'cloudinary',
-      providerOptions: {
-        cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-        api_key: process.env.CLOUDINARY_API_KEY,
-        api_secret: process.env.CLOUDINARY_API_SECRET,
-        //folder: process.env.CLOUDINARY_FOLDER,
+      config: {
+        provider: 'cloudinary',
+        providerOptions: {
+          cloud_name: env('CLOUDINARY_NAME'),
+          api_key: env('CLOUDINARY_KEY'),
+          api_secret: env('CLOUDINARY_SECRET'),
+        },
+        actionOptions: {
+          upload: {},
+          delete: {},
+        },
       },
-      actionOptions: {
-        upload: {},
-        delete: {},
-      },
-    }
-  },
+    },
+  };
 };
 

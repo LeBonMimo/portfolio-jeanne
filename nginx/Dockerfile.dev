@@ -1,0 +1,20 @@
+FROM nginx:alpine
+
+# Install openssl for certificate generation
+RUN apk add --no-cache openssl
+
+# Create directory for certificates
+RUN mkdir -p /etc/nginx/ssl/dev
+
+# Generate self-signed certificates during image build
+RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+    -keyout /etc/nginx/ssl/dev/privkey.pem \
+    -out /etc/nginx/ssl/dev/fullchain.pem \
+    -subj "/C=US/ST=State/L=City/O=Organization/CN=localhost"
+
+# Copy nginx configuration
+COPY ./nginx/conf.d/dev.conf /etc/nginx/conf.d/default.conf
+
+EXPOSE 80 443
+
+CMD ["nginx", "-g", "daemon off;"]

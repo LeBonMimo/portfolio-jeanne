@@ -1,0 +1,87 @@
+version: '3'
+
+services:
+  backend-dev:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    container_name: strapi-backend-dev
+    restart: unless-stopped
+    environment:
+      NODE_ENV: development
+      DATABASE_CLIENT: ${DATABASE_CLIENT:-sqlite}
+      DATABASE_HOST: ${DATABASE_HOST:-db-dev}
+      DATABASE_PORT: ${DATABASE_PORT:-5432}
+      DATABASE_NAME: ${DATABASE_NAME:-strapi_dev}
+      DATABASE_USERNAME: ${DATABASE_USERNAME:-strapi_dev}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD:-strapi_dev}
+      JWT_SECRET: ${JWT_SECRET:-dev-jwt-secret}
+      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET:-dev-admin-jwt-secret}
+      APP_KEYS: ${APP_KEYS:-dev-key1,dev-key2,dev-key3,dev-key4}
+      API_TOKEN_SALT: ${API_TOKEN_SALT:-dev-salt}
+      # SSL Configuration
+      URL: https://localhost
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    networks:
+      - app-network-dev
+    depends_on:
+      - db-dev
+
+  client-dev:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    container_name: nuxt-frontend-dev
+    restart: unless-stopped
+    environment:
+      NODE_ENV: development
+      NUXT_PUBLIC_API_URL: ${NUXT_PUBLIC_API_URL:-https://localhost/api}
+      # Host Configuration - Nuxt requires this for hot reloading
+      HOST: 0.0.0.0
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+      - /app/.nuxt
+    networks:
+      - app-network-dev
+    depends_on:
+      - backend-dev
+
+  db-dev:
+    image: postgres:14-alpine
+    container_name: strapi-db-dev
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DATABASE_NAME:-strapi_dev}
+      POSTGRES_USER: ${DATABASE_USERNAME:-strapi_dev}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-strapi_dev}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data-dev:/var/lib/postgresql/data
+    networks:
+      - app-network-dev
+
+  nginx-dev:
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile.dev
+    container_name: nginx-dev
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - app-network-dev
+    depends_on:
+      - backend-dev
+      - client-dev
+
+networks:
+  app-network-dev:
+    driver: bridge
+
+volumes:
+  postgres-data-dev:
